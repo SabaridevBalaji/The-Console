@@ -1,6 +1,6 @@
 THE CONSOLE
 
-i built this because i wanted a completely minimal dashboard without any react/npm bloat or needing a backend. it runs entirely local in the browser. 
+i built this because i wanted a minimal dashboard with no backend requirement and wanted something lightweightt.
 
 it has a clock, a quick focus to-do list, and a scratchpad. all your notes and tasks save automatically to localstorage so you don't lose them if you close the tab. also added a light theme toggle. 
 
