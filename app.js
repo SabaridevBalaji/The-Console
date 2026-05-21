@@ -19,5 +19,11 @@ taskInput.addEventListener('keypress', (e) =>{
         li.textContent='>'+taskInput.value;
         taskList.appendChild(li);
         taskInput.value='';
+        li.addEventListener('click',()=>{
+            li.style.textDecoration='line-through';
+            li.style.opacity='0.4';
+            setTimeout(() => li.remove(),400);
+        });
     }
 })
+
