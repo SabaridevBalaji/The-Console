@@ -8,3 +8,16 @@ function runClock(){
         },1000);
     }
 runClock();
+
+
+const taskInput=document.getElementById('new-task');
+const taskList=document.getElementById('task-list');
+
+taskInput.addEventListener('keypress', (e) =>{
+    if(e.key=== 'Enter'&& taskInput.value!==''){
+        let li = document.createElement('li');
+        li.textContent='>'+taskInput.value;
+        taskList.appendChild(li);
+        taskInput.value='';
+    }
+})
