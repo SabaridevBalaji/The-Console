@@ -1,3 +1,10 @@
+body.vanilla-theme{
+    --bg-color:#FDFBF7;
+    --panel-bg:#F5F2EA;
+    --text-main:#2C2C2E;
+    --text-dim:#8B8884;
+}
+body, .panel{transition:background-color 0.3s, color 0.3s;}
 :root{
     --bg-color: #0a0a0c;
     --panel-bg: #141417  ;
@@ -76,10 +83,11 @@ textarea{
 
 .main-grid{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;;
     gap:1.4rem;
 }
 
 @media(max-width:768px){
     .main-grid{grid-template-column:1fr;}
 }
+
