@@ -27,3 +27,10 @@ taskInput.addEventListener('keypress', (e) =>{
     }
 })
 
+const textarea= document.getElementById('notes-area');
+if(localStorage.getItem('my_notes')){
+    textarea.value=localStorage.getItem('my_notes');
+}
+textarea.addEventListener('input',()=> {
+    localStorage.setItem('my_notes',textarea.value);
+});
