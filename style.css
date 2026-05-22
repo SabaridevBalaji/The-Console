@@ -62,3 +62,14 @@ input{
 
 ul{list-style:none;}
 li{padding:8px 0; cursor:pointer;}
+
+
+textarea{
+    width: 100%;
+    min-height:150px;
+    background:transparent;
+    border:none;
+    color:var(--text-main);
+    outline:none;
+    resize:none;
+}
