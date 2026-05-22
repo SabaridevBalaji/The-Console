@@ -17,6 +17,7 @@
                 <button id="time-toggle-btn" style="background:none; border:1px solid var(--text-dim); color:var(--text-dim); cursor:pointer; padding: 2px 6px; border-radius:4px;">24H</button>
              </div>
             </div>
+            </header>
         <div class="main-grid">
             <section class="panel">
                 <h3 style="color: var(--text-dim); margin-bottom:1rem;">Focus</h3>
@@ -27,6 +28,17 @@
                 <h3 style="color: var(--text-dim); margin-bottom:1rem;">Scratchpad</h3>
                 <textarea id="notes-area" placeholder="Type here..."></textarea>
             </section>
+            <div style="display:flex; flex-direction:column; gap:1.4rem;">
+                <section class = "panel" style="display:flex; flex-direction:column; align-items:center;">
+                    <h3 style= "color: var(--text-dim); margin-bottom:1rem;">Analog</h3>
+                    <div class="clock-face">
+                        <div class="hand hour-hand" id="hour-hand"></div>
+                        <div class="hand min-hand" id="min-hand"></div>
+                        <div class="hand sec-hand" id="sec-hand"></div>
+                        <div class="center-dot"></div>
+                    </div>
+                </section>
+            </div>
         </div>
         <div class="logo-text">
              <button id="theme-btn" style="background:none; color:white; border:none; cursor:pointer;">◐</button>
