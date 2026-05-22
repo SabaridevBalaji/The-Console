@@ -73,3 +73,13 @@ textarea{
     outline:none;
     resize:none;
 }
+
+.main-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1.4rem;
+}
+
+@media(max-width:768px){
+    .main-grid{grid-template-column:1fr;}
+}
