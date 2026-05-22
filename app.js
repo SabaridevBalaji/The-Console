@@ -34,3 +34,18 @@ if(localStorage.getItem('my_notes')){
 textarea.addEventListener('input',()=> {
     localStorage.setItem('my_notes',textarea.value);
 });
+
+const themeBtn =  document.getElementById('theme-btn');
+if(localStorage.getItem('theme')==='theme'){
+
+    document.body.classList.add('vanilla-theme');
+}
+themeBtn.addEventListener('click', ()=>{
+    document.body.classList.toggle('vanilla-theme');
+    if(document.body.classList.contains('vanilla-theme')){
+        localStorage.setItem('theme', 'vanilla');
+    } 
+    else{
+        localStorage.setItem('theme','dark');
+    }
+});
