@@ -12,11 +12,11 @@ timeToggleBtn.addEventListener('click', ()=>{
     updateClock();
 });
 
-function updateClock({
+function updateClock(){
     let now= new Date();
 
-    clockText.textContent=now.toLocaleTimeString('en-US'.{
-        hour12: 1is24hour,
+    clockText.textContent=now.toLocaleTimeString('en-US',{
+        hour12: !is24hour,
         hour: '2-digit', minute:'2-digit', second:'2-digit'
     });
     dateText.textContent=now.toDateString();
@@ -26,10 +26,13 @@ function updateClock({
     const secDeg=(seconds/60)*360;
     const minDeg=((mins/60)*360)+((seconds/60)*6);
     const hourDeg=((hours/12)*360)+((mins/60)*30);
-    secHand.style.transform='translateX(-50%) rotate(${secDeg}deg)';
-    minHand.style.transform='translateX(-50%) rotate(${minDeg}deg)';
-    hourHand.style.transform ='translateX(-50%) rotate(${hourDeg}deg);'
-})
+    secHand.style.transform=`translateX(-50%) rotate(${secDeg}deg)`;
+    minHand.style.transform=`translateX(-50%) rotate(${minDeg}deg)`;
+    hourHand.style.transform =`translateX(-50%) rotate(${hourDeg}deg)`;
+}
+
+setInterval(updateClock,1000);
+updateClock();
 /* old fucntion for clock*/
 /*function runClock(){
     const clock =document.getElementById('clock-text');
