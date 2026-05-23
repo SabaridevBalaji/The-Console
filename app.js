@@ -85,3 +85,35 @@ themeBtn.addEventListener('click', ()=>{
         localStorage.setItem('theme','dark');
     }
 });
+
+async function fetchWeatherData(lat,lon,cityName) {
+    const tempText=document.getElementById('w-temp');
+    const descText=document.getElementById('w-desc');
+    const locText=document.getElementById('w-loc');
+    
+
+    try{
+        const res= await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+        const data=await res.json();
+        const temp=Math.round(data.current_weather.temperature);
+        const code=data. current_weather.weathercode;
+
+        let desc='Clear';
+        if(code>0&&code<=3)
+             desc='Cloudy';
+        if(code>=45&&code<=48)
+            desc='Foggy';
+        if(code>=51&&code<=67)
+            desc='Rain';
+        if(code>=71&&code<=77)
+            desc='Snow';
+        if(code>=95)
+            desc="Storms";
+        tempText.textContent=`${temp}°C`;
+        descText.textContent=desc;
+        locText.textContent=cityName;
+    } catch(err){
+        tempText.textContent= '--°C';
+        descText.textContent='Offline';
+    }
+}
