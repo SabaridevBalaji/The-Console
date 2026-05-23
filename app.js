@@ -159,41 +159,55 @@ function updateWeather(){
 updateWeather();
 setInterval(updateWeather,1800000);
 
-let flowTime=25*60;
-let flowTimer;
-let isFlowing=false;
 const flowDisplay=document.getElementById('flow-time');
 const flowPlay=document.getElementById('flow-play');
 const flowReset=document.getElementById('flow-reset');
-
+const flowInput=document.getElementById('flow-input');
+let flowTimer;
+let isFlowing=false;
+let customMins=parseInt(flowInput.value)||25;
+let flowTime=customMins*60;
 
 const bgAudio=document.getElementById('bg-audio');
+const alarmAudio=document.getElementById('alarm-audio');
 const musicToggle=document.getElementById('music-toggle');
 const playerStatus=document.getElementById('player-status');
-bgAudio.volume=0.4;
+const volumeSlider=document.getElementById('volume-slider');
+
+bgAudio.volume=volumeSlider.value;
+alarmAudio.volume=0.8;
+volumeSlider.addEventListener('input',(e)=>{
+    bgAudio.volume=e.target.value;
+});
 
 function updateFlow(){
     const m =String(Math.floor(flowTime/60)).padStart(2,'0');
-    const s=String(flowTime%60).padStart(2,'0');
+    const s= String(flowTime%60).padStart(2,'0');
     flowDisplay.textContent=`${m}:${s}`;
-
 }
+
+flowInput.addEventListener('input',()=>{
+    if(!isFlowing){
+        customMins=parseInt(flowInput.value)||1;
+        flowTime=customMins*60;
+        updateFlow();
+    }
+});
 
 function toggleRadio(forcePlay=false, forcePause=false){
     if(forcePause||(!forcePlay&&!bgAudio.paused)){
         bgAudio.pause();
         musicToggle.textContent='▶';
         playerStatus.textContent='Paused';
-    }
-
-    else{
-        bgAudio.play().catch(()=> console. log('Connecting to stream...'));
-        musicToggle.textContent='⏸';
+        
+    } else{
+        bgAudio.play().catch(() => console.log('Connecting to stream....'));
+        musicToggle.textContent="⏸";
         playerStatus.textContent='Live Stream';
     }
 }
 
-musicToggle.addEventListener('click',()=>{
+musicToggle.addEventListener('click', ()=>{
     toggleRadio();
 });
 
@@ -202,18 +216,19 @@ flowPlay.addEventListener('click',()=>{
         clearInterval(flowTimer);
         toggleRadio(false,true);
         flowPlay.textContent='Start';
-    }
-
-    else{
+    }   else{
         flowTimer=setInterval(()=>{
             flowTime--;
             updateFlow();
-            if(flowTime <=0){
+
+            if(flowTime<=0){
                 clearInterval(flowTimer);
                 toggleRadio(false,true);
+                alarmAudio.play().catch(()=>console.log('add carchime.wav to your folder'));
                 flowPlay.textContent='Done';
+
             }
-        },1000);
+        }, 1000);
         toggleRadio(true,false);
         flowPlay.textContent='Pause';
     }
@@ -223,8 +238,12 @@ flowPlay.addEventListener('click',()=>{
 flowReset.addEventListener('click',()=>{
     clearInterval(flowTimer);
     isFlowing=false;
-    flowTime=25*60;
+    customMins=parseInt(flowInput.value)||25;
+    flowTime=customMins*60;
     updateFlow();
     toggleRadio(false,true);
+
+    alarmAudio.pause();
+    alarmAudio.currentTime=0;
     flowPlay.textContent='Start';
 });
