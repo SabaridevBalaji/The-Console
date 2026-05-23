@@ -9,14 +9,14 @@
 <body>
     <main class="dashboard-wrapper">
         <header class="top-bar panel">
-            <div class="logo-text">console</div>
-            <div class="clock-area">
-                <div id="date-text" style="color: var(--text-dim); margin-bottom:6px; font-size:0.9rem;">loading...</div>
-                <div style="display:flex; align-items:center; gap:12  px; justify-content:flex-end;">
-                    <h1 id="clock-text" style="line-height:1;">00:00</h1>
-                    <button id="time-toggle-btn"class="time-toggle">24H</button>
-                    <button id="theme-btn" style="background:transparent; color:var(--text-dim); border:none; cursor:pointer; font-size:1.2rem; outline:none; transition:0.2s;">◐</button>
-                </div>
+            <div style="display:flex; align-items:center; gap:16px;">
+                <div class="logo-text" style="font-weight:bold; font-size:1.2rem;">console</div>
+                <button id="time-toggle-btn" class="time-toggle">24H</button>
+                <button id="theme-btn" style="background:transparent; color:var(--text-dim); border:none; cursor:pointer; font-size:1.2rem; outline:none; transition:0.2s">◐</button>
+            </div>
+            <div class="clock-area" style="display:flex; flex-direction:column; align-items:flex-end;">
+                <h1 id="clock-text" style="font-size:3.5rem; font-weight:800; letter-spacing:-2px; line-height:1 margin:0;">00:00</h1>
+                <div id="date-text" style="color:var(--text-dim); font-size:1rem; font-weight:500; margin-top:8px;">loading...</div>
             </div>
         </header>
         <div class="main-grid">
