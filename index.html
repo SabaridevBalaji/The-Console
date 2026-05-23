@@ -20,11 +20,24 @@
             </div>
         </header>
         <div class="main-grid">
-            <section class="panel">
-                <h3 style="color: var(--text-dim); margin-bottom:1rem;">Focus</h3>
-                <input type="text" id="new-task" placeholder="What needs doing?">
-                <ul id="task-list"></ul>
-            </section>
+            <div style="display:flex; flex-direction: :column; gap:1.4rem;">
+                <section class="panel">
+                    <h3 style="color:var(--text-dim); margin-bottom: 1rem;">Focus</h3>
+                    <input type="text" id="new-task" placeholder="What needs doing?">
+                    <ul id="task-list"></ul>    
+                </section>
+                <section class="panel" style="display:flex; flex-direction:column; align-items:center; padding:2rem 1.5rem;">
+                    <h3 style="color:var(--text-dim); margin-bottom: :0.5rem; width:100%; text-align:left;">Flow State</h3>
+                    <h1 id="flow-time" style="font-size:3.5rem; font-weight:800; letter-spacing:-2px; margin:1.5rem 0;">25:00</h1>
+                    <div style="display:flex; gap:12px; margin-bottom:1.5rem;">
+                        <button id="flow-play" class="time-toggle" style="font-size:0.85rem; padding: 6px 18px;">Start</button>
+                        <button id="flow-reset" class="time-toggle" style="font-size:0.85rem; padding: 6px 18px;">Reset</button>
+                    </div>
+                    <div style="width:100%; border-top: var(--border-line); padding-top:1rem; display:flex; align-items:center;justify-content: space-between;">
+                        
+                    </div>
+                </section>
+            </div>
             <section class="panel">
                 <h3 style="color: var(--text-dim); margin-bottom:1rem;">Scratchpad</h3>
                 <textarea id="notes-area" placeholder="Type here..."></textarea>
