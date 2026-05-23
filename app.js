@@ -72,7 +72,7 @@ textarea.addEventListener('input',()=> {
 });
 
 const themeBtn =  document.getElementById('theme-btn');
-if(localStorage.getItem('theme')==='theme'){
+if(localStorage.getItem('theme')==='vanilla'){
 
     document.body.classList.add('vanilla-theme');
 }
