@@ -215,7 +215,7 @@ flowPlay.addEventListener('click',()=>{
             }
         },1000);
         toggleRadio(true,false);
-        flowPlay.textContet='Pause';
+        flowPlay.textContent='Pause';
     }
     isFlowing=!isFlowing;
 });
