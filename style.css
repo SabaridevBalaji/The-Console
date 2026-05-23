@@ -91,3 +91,45 @@ textarea{
     .main-grid{grid-template-column:1fr;}
 }
 
+.clock-face{
+    position:relative;
+    width:140px;
+    height:140px;
+    border:2px solid var(--text-dim);
+    border-radius:50%;
+}
+.hand{
+
+    position:absolute;
+    bottom:50%;
+    left:50%;
+    transform-origin:bottom;
+    background-color:var(--text-main);
+    border-radius:4px;
+}
+
+.hour-hand{
+    width:4px;
+    height:30%;;
+}
+.min-hand{
+    width:3px; 
+    height:42%;;
+}
+.sec-hand{
+    width:2px;
+    height:48%;
+    background-color: #ff5555;
+}
+
+
+.center-dot{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:10px;
+    height:10px;
+    background:#ff5555;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+}
