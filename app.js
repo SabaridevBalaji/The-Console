@@ -43,7 +43,7 @@ updateClock();
         date.textContent=now.toDateString();
         },1000);
     }*/
-runClock();
+
 
 
 const taskInput=document.getElementById('new-task');
