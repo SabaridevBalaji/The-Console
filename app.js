@@ -1,4 +1,37 @@
-function runClock(){
+let is24hour=true;
+const timeToggleBtn=  document.getElementById('time-toggle-btn');
+const clockText=document.getElementById('clock-text');
+const dateText=document.getElementById('date-text');
+const hourHand=document.getElementById('hour-hand');
+const minHand=document.getElementById('min-hand');
+const secHand=document.getElementById('sec-hand');
+
+timeToggleBtn.addEventListener('click', ()=>{
+    is24hour= !is24hour;
+    timeToggleBtn.textContent= is24hour ? '24H': '12H';
+    updateClock();
+});
+
+function updateClock({
+    let now= new Date();
+
+    clockText.textContent=now.toLocaleTimeString('en-US'.{
+        hour12: 1is24hour,
+        hour: '2-digit', minute:'2-digit', second:'2-digit'
+    });
+    dateText.textContent=now.toDateString();
+    const seconds=now.getSeconds();
+    const mins=now.getMinutes();
+    const hours=now.getHours();
+    const secDeg=(seconds/60)*360;
+    const minDeg=((mins/60)*360)+((seconds/60)*6);
+    const hourDeg=((hours/12)*360)+((mins/60)*30);
+    secHand.style.transform='translateX(-50%) rotate(${secDeg}deg)';
+    minHand.style.transform='translateX(-50%) rotate(${minDeg}deg)';
+    hourHand.style.transform ='translateX(-50%) rotate(${hourDeg}deg);'
+})
+/* old fucntion for clock*/
+/*function runClock(){
     const clock =document.getElementById('clock-text');
     const date=document.getElementById('date-text');
     setInterval(() =>{
@@ -6,7 +39,7 @@ function runClock(){
         clock.textContent=now.toLocaleTimeString('en-US',{hour12:false});
         date.textContent=now.toDateString();
         },1000);
-    }
+    }*/
 runClock();
 
 
