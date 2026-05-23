@@ -35,16 +35,16 @@
                     <button id="flow-play" class="time-toggle" style="font-size:0.85rem; padding:6px 18px;">Start</button>
                     <button id="flow-reset" class="time-toggle" style="font-size:0.85rem; padding:6px 18px;">Reset</button>
                   </div>
-                  <div style="width:100%; border-top:var(--border-line); padding-top: 1rem; display:flex; align-items:center; justify-content:space-between;">
-                    <div style="display:flex; flex-direction:column; align-items:flex-start;">
-                      <div style="display:flex; align-items:center; gap:8px;">
-                        <span style="font-size: 0.85rem; font-weight: 600;">Lofi Radio</span>
-                        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.4" style="width:60px; height:3px; accent-color:var(--text-dim); cursor:pointer;">
-                      </div>
-                      <span id="player-status" style="font-size:0.75rem; color:var(--text-dim);">Paused</span>
+                 <div class="radio-player-container">
+                    <div class="radio-info">
+                        <span class="radio-title">Lofi Radio</span>
+                        <span id="player-status">Paused</span>
                     </div>
-                    <button id="music-toggle" style="background:transparent; color:var(--text-main); border:none; cursor:pointer; font-size:1.2rem; outline:none; transition:0.2s">▶</button>
-                  </div>
+                    <div class="radio-controls">
+                        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.4">
+                        <button id="music-toggle">▶</button>
+                    </div>
+                 </div>
                   <audio id="bg-audio" preload="none;">
                     <source src="https://lofi.stream.laut.fm/lofi" type="audio/mpeg">
                   </audio>
