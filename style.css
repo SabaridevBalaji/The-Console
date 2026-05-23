@@ -55,6 +55,23 @@ body{
 #clock-text{
     font-size:2.5rem;
 }
+.time-toggle{
+    background:transparent;
+    border:1px solid #e1e1e10d;
+    color: var(--text-dim);
+    cursor:pointer;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:0.74rem;
+    letter-spacing:1px;
+    transition:all 0.2s ease;
+    outline:none;
+}
+
+.time-toggle:hover{
+    color:var(--text-main);
+    border-color:var(--text-dim);
+}
 
 input{
     width: 100%;
