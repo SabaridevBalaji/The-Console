@@ -112,8 +112,11 @@ textarea{
     position:relative;
     width:140px;
     height:140px;
-    border:2px solid var(--text-dim);
+    border:1px solid #e1e1e10d;
     border-radius:50%;
+    background:
+        radial-gradient(var(--panel-bg)65%, transparent 68%),
+        repeating-conic-gradient(from -1deg, var(--text-dim) 0deg 2deg, transparent 2deg 30deg);
 }
 .hand{
 
@@ -136,9 +139,8 @@ textarea{
 .sec-hand{
     width:2px;
     height:48%;
-    background-color: #ff5555;
+    background-color: #aa3333;
 }
-
 
 .center-dot{
     position:absolute;
@@ -146,7 +148,7 @@ textarea{
     left:50%;
     width:10px;
     height:10px;
-    background:#ff5555;
+    background:#aa3333;
     border-radius:50%;
     transform:translate(-50%,-50%);
 }
