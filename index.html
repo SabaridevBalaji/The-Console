@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Console</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,10 +30,17 @@
                   <h3 style="color:var(--text-dim); margin-bottom:0.5rem; width:100%; text-align:left;">Flow State</h3>
                   <h1 id="flow-time" style="font-size:3.5rem; font-weight:800; letter-spacing:-2px; margin:1.5rem 0;">25:00</h1>
                   <div style="display:flex; gap:12px; margin-bottom:1.5rem; align-items:center;">
-                    <input type="number" id="flow-input" value="25" min="1" style="width:45px; background:transparent; border:1px solid var(--border-line); color:var(--text-main); border-radius: 4px; padding:4px; text-align:center; outline:none; font-size:0.85rem;">
-                    <span style="color:var(--text-dim); font-size:0.85rem; margin-right:8px;">min</span>
+                    <div class="custom-number-wrapper">
+                        <input type="number" id="flow-input" value="25" min="1">
+                        <div class="step-buttons">
+                            <button id="step-up">▲</button>
+                            <button id="step-down">▼</button>
+                        </div>
+                    </div>
+                    <span style="color:var(--text-dim); font-size: 0.85rem; margin-right:8px">min</span>
                     <button id="flow-play" class="time-toggle" style="font-size:0.85rem; padding:6px 18px;">Start</button>
                     <button id="flow-reset" class="time-toggle" style="font-size:0.85rem; padding:6px 18px;">Reset</button>
+                    
                   </div>
                  <div class="radio-player-container">
                     <div class="radio-info">
@@ -45,7 +52,7 @@
                         <button id="music-toggle">▶</button>
                     </div>
                  </div>
-                  <audio id="bg-audio" preload="none;">
+                  <audio id="bg-audio" preload="none">
                     <source src="https://lofi.stream.laut.fm/lofi" type="audio/mpeg">
                   </audio>
                   <audio id="alarm-audio" preload="auto">
