@@ -48,20 +48,34 @@ updateClock();
 
 const taskInput=document.getElementById('new-task');
 const taskList=document.getElementById('task-list');
-
-taskInput.addEventListener('keypress', (e) =>{
-    if(e.key=== 'Enter'&& taskInput.value!==''){
-        let li = document.createElement('li');
-        li.textContent='>'+taskInput.value;
+let savedTasks=JSON.parse(localStorage.getItem('focus_tasks')) || [];
+function renderTasks(){
+    taskList.innerHTML='';
+    savedTasks.forEach((task,index)=>{
+        let li =document.createElement('li');
+        li.textContent=task;
         taskList.appendChild(li);
-        taskInput.value='';
         li.addEventListener('click',()=>{
             li.style.textDecoration='line-through';
             li.style.opacity='0.4';
-            setTimeout(() => li.remove(),400);
+            setTimeout(()=>{
+                savedTasks.splice(index,1);
+                localStorage.setItem('focus_tasks',JSON.stringify(savedTasks));
+                renderTasks();
+            }, 400);
         });
+    });
+}
+renderTasks();
+taskInput.addEventListener('keypress',(e)=>{
+    if(e.key==="Enter"&& taskInput.value !== ''){
+        savedTasks.push('>'+ taskInput.value);
+        localStorage.setItem('focus_tasks', JSON.stringify(savedTasks));
+        taskInput.value='';
+        renderTasks();
     }
-})
+});
+
 
 const textarea= document.getElementById('notes-area');
 if(localStorage.getItem('my_notes')){
