@@ -117,3 +117,30 @@ async function fetchWeatherData(lat,lon,cityName) {
         descText.textContent='Offline';
     }
 }
+function updateWeather(){
+    if("geolocation" in navigator){
+        navigator.geolocation.getCurrentPosition(
+            async(position)=>{
+                const lat=position.coords.latitude;
+                const lon=position.coords.longitude;
+
+                try{
+                    const geoRes= await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+                    const geoData= await  geoRes.json();
+                    const city = geoData.city || geoData.locality || "Local Area";
+                    fetchWeatherData(lat,lon,city.toLowerCase());
+                } catch{
+                    fetchWeatherData(lat,lon,"current location");
+                }
+            },
+            (error)=>{
+                fetchWeatherData(8.5241,76.9366, "location denied");
+            }
+        );
+    } else {
+        fetchWeatherData(8.5241,76.9366, "unsupported browser");
+    }
+}
+
+updateWeather();
+setInterval(updateWeather,1800000);
