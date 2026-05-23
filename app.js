@@ -158,3 +158,73 @@ function updateWeather(){
 
 updateWeather();
 setInterval(updateWeather,1800000);
+
+let flowTime=25*60;
+let flowTimer;
+let isFlowing=false;
+const flowDisplay=document.getElementById('flow-time');
+const flowPlay=document.getElementById('flow-play');
+const flowReset=document.getElementById('flow-reset');
+
+
+const bgAudio=document.getElementById('bg-audio');
+const musicToggle=document.getElementById('music-toggle');
+const playerStatus=document.getElementById('player-status');
+bgAudio.volume=0.4;
+
+function updateFlow(){
+    const m =String(Math.floor(flowTime/60)).padStart(2,'0');
+    const s=String(flowTime%60).padStart(2,'0');
+    flowDisplay.textContent=`${m}:${s}`;
+
+}
+
+function toggleRadio(forcePlay=false, forcePause=false){
+    if(forcePause||(!forcePlay&&!bgAudio.paused)){
+        bgAudio.pause();
+        musicToggle.textContent='▶';
+        playerStatus.textContent='Paused';
+    }
+
+    else{
+        bgAudio.play().catch(()=> console. log('Connecting to stream...'));
+        musicToggle.textContent='⏸';
+        playerStatus.textContent='Live Stream';
+    }
+}
+
+musicToggle.addEventListener('click',()=>{
+    toggleRadio();
+});
+
+flowPlay.addEventListener('click',()=>{
+    if(isFlowing){
+        clearInterval(flowTimer);
+        toggleRadio(false,true);
+        flowPlay.textContent='Start';
+    }
+
+    else{
+        flowTimer=setInterval(()=>{
+            flowTime--;
+            updateFlow();
+            if(flowTime <=0){
+                clearInterval(flowTimer);
+                toggleRadio(false,true);
+                flowPlay.textContent='Done';
+            }
+        },1000);
+        toggleRadio(true,false);
+        flowPlay.textContet='Pause';
+    }
+    isFlowing=!isFlowing;
+});
+
+flowReset.addEventListener('click',()=>{
+    clearInterval(flowTimer);
+    isFlowing=false;
+    flowTime=25*60;
+    updateFlow();
+    toggleRadio(false,true);
+    flowPlay.textContent='Start';
+});
