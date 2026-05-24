@@ -163,70 +163,93 @@ const flowDisplay=document.getElementById('flow-time');
 const flowPlay=document.getElementById('flow-play');
 const flowReset=document.getElementById('flow-reset');
 const flowInput=document.getElementById('flow-input');
+const stepUpBtn=document.getElementById('step-up');
+const stepDownBtn=document.getElementById('step-down');
 let flowTimer;
 let isFlowing=false;
-let customMins=parseInt(flowInput.value)||25;
-let flowTime=customMins*60;
+let customMins=parseInt(flowInput.value)||  25;
+let flowTime= customMins*60;
 
 const bgAudio=document.getElementById('bg-audio');
 const alarmAudio=document.getElementById('alarm-audio');
 const musicToggle=document.getElementById('music-toggle');
 const playerStatus=document.getElementById('player-status');
 const volumeSlider=document.getElementById('volume-slider');
-
 bgAudio.volume=volumeSlider.value;
 alarmAudio.volume=0.8;
-volumeSlider.addEventListener('input',(e)=>{
+volumeSlider.addEventListener('input' (e)=>{
     bgAudio.volume=e.target.value;
 });
 
 function updateFlow(){
-    const m =String(Math.floor(flowTime/60)).padStart(2,'0');
-    const s= String(flowTime%60).padStart(2,'0');
+    const m=String(Math.floor(flowTime/60)).padStart(2,'0');
+    const s=String(flowTime%60).padStart(2,'0');
     flowDisplay.textContent=`${m}:${s}`;
+
 }
 
 flowInput.addEventListener('input',()=>{
     if(!isFlowing){
-        customMins=parseInt(flowInput.value)||1;
+        customMins=parseInt(flowInput.value)||25;
+        flowTime=customMins*60;
+        updateFlow();
+    }
+});
+flowInput.addEventListener('change',()=>{
+    customMins=parseInt(flowInput.value)|| 25;
+    flowTime=customMins*60;
+    updateFlow();
+});
+
+stepUpBtn.addEventListener('click',()  =>{
+    if(!isFlowing){
+        flowInput.stepUp();
+        customMins=parseInt(flowInput.value)||  25;
         flowTime=customMins*60;
         updateFlow();
     }
 });
 
-function toggleRadio(forcePlay=false, forcePause=false){
-    if(forcePause||(!forcePlay&&!bgAudio.paused)){
+stepDownBtn.addEventListener('click',()=>{
+    if(!isFlowing){
+        if(parseInt(flowInput.value)>1){
+            flowInput.stepDown();
+            customMins=parseInt(flowInput.value)||25;
+            flowTime=customMins*60;
+            updateFlow();
+        }
+    }
+});
+
+function toggleRadio(forcePlay=false,forcePause=false){
+    if(forcePause||(!forcePlay&& !bgAudio.paused)){
         bgAudio.pause();
         musicToggle.textContent='▶';
         playerStatus.textContent='Paused';
-        
     } else{
-        bgAudio.play().catch(() => console.log('Connecting to stream....'));
+        bgAudio.play().catch(()=> console.log('Connecting to stream....'));
         musicToggle.textContent="⏸";
         playerStatus.textContent='Live Stream';
     }
 }
-
-musicToggle.addEventListener('click', ()=>{
+musicToggle.addEventListener('click',()=>{
     toggleRadio();
 });
 
 flowPlay.addEventListener('click',()=>{
-    if(isFlowing){
+    if(!isFlowing){
         clearInterval(flowTimer);
         toggleRadio(false,true);
         flowPlay.textContent='Start';
-    }   else{
-        flowTimer=setInterval(()=>{
-            flowTime--;
+    } else{
+        flowTimer=setInterval(() => {
+            flowtime--;
             updateFlow();
-
             if(flowTime<=0){
                 clearInterval(flowTimer);
                 toggleRadio(false,true);
-                alarmAudio.play().catch(()=>console.log('add carchime.wav to your folder'));
+                alarmAudio.play().catch(()=> console.log('add carchime.wav to your foler'));
                 flowPlay.textContent='Done';
-
             }
         }, 1000);
         toggleRadio(true,false);
@@ -234,7 +257,6 @@ flowPlay.addEventListener('click',()=>{
     }
     isFlowing=!isFlowing;
 });
-
 flowReset.addEventListener('click',()=>{
     clearInterval(flowTimer);
     isFlowing=false;
@@ -242,7 +264,6 @@ flowReset.addEventListener('click',()=>{
     flowTime=customMins*60;
     updateFlow();
     toggleRadio(false,true);
-
     alarmAudio.pause();
     alarmAudio.currentTime=0;
     flowPlay.textContent='Start';
