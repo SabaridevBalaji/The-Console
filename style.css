@@ -19,7 +19,7 @@ body, .panel{transition:background-color 0.3s, color 0.3s;}
 *{
     box-sizing: border-box;
     margin:0;
-    padding:0;g
+    padding:0;
 }
 
 
@@ -279,4 +279,22 @@ textarea{
 }
 .step-buttons button:hover{
     color:var(--text-main);
+}
+
+.scratchpad-card{
+    display:flex !important;
+    flex-direction: column !important;
+    height:100% !important;
+}
+
+#notes-area{
+    flex:1 !important;
+    width:100%;
+    background:transparent;
+    border:none;
+    color:var(--text-main);
+    outline:none;
+    resize:none;
+    margin-top:0.5rem;
+    padding-bottom:0;
 }
