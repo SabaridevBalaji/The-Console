@@ -218,12 +218,65 @@ textarea{
     outline:none;
 }
 
-.radio-player-container{
-    width:100%;
-    border-top:var(--border-line);
-    padding-top:1.2rem;
-    margin-top:0.5rem;
+#flow-input {
+    -moz-animation: textfield;
+    appearance: textfield;
+
+}
+#flow-input::-webkit-outer-spin-button,
+#flow-input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin:0;
+}
+
+
+.custom-number-wrapper{
+    position: relative;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    background:#1a1a1e;
+    border: 1px
+    solid #242427;
+    border-radius:4px;
+    padding-right:4px;
+    transition:border-color 0.15s ease;
+
+}
+
+#flow-input{
+    width:38px !important;
+    background:transparent !important;
+    border:none !important;
+    padding:5px 0 5px 6px !important;
+    margin:0 !important ;
+    color:var(--text-main) !important;
+    text-align:center !important;
+    font-family:inherit;
+    font-weight:600;
+    outline:none !important;
+}
+.custom-number-wrapper:focus-within{
+    border-color:var(--text-dim);
+}
+
+.step-buttons{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:1px;
+}
+
+.step-buttons button{
+    background:transparent;
+    border:none;
+    color:var(--text-dim);
+    font-size:0.55rem;
+    cursor:pointer;
+    padding:1px 4px;
+    line-height:1;
+    outline:none;
+    transition: color 0.1s ease;
+}
+.step-buttons button:hover{
+    color:var(--text-main);
 }
