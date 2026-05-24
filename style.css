@@ -219,7 +219,7 @@ textarea{
 }
 
 #flow-input {
-    -moz-animation: textfield;
+    -moz-appearance: textfield;
     appearance: textfield;
 
 }

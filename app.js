@@ -177,7 +177,7 @@ const playerStatus=document.getElementById('player-status');
 const volumeSlider=document.getElementById('volume-slider');
 bgAudio.volume=volumeSlider.value;
 alarmAudio.volume=0.8;
-volumeSlider.addEventListener('input' (e)=>{
+volumeSlider.addEventListener('input', (e)=>{
     bgAudio.volume=e.target.value;
 });
 
@@ -243,7 +243,7 @@ flowPlay.addEventListener('click',()=>{
         flowPlay.textContent='Start';
     } else{
         flowTimer=setInterval(() => {
-            flowtime--;
+            flowTime--;
             updateFlow();
             if(flowTime<=0){
                 clearInterval(flowTimer);
