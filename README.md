@@ -10,3 +10,6 @@ also features an analog clock
 
 built for hack club macondo
 
+ Credits & Assets
+Flow State Alarm: [CAR DOOR CHIME.wav](https://freesound.org/s/345067/) by [metrostock99](https://freesound.org/people/metrostock99/) (Licensed under CC0)
+Lofi Stream: Provided by [laut.fm/lofi](https://laut.fm/lofi)
