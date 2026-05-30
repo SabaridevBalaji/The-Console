@@ -16,14 +16,14 @@
 
                 <button id="zen-btn" class="time-toggle">ZEN</button>
             </div>
-            <div class="clock-area" style="display:flex; flex-direction:column; align-items:flex-end;">
+            <div class="clock-area zen-hide" style="display:flex; flex-direction:column; align-items:flex-end;">
                 <h1 id="clock-text" style="font-size:3.5rem; font-weight:800; letter-spacing:-2px; line-height:1; margin:0;">00:00</h1>
                 <div id="date-text" style="color:var(--text-dim); font-size:1rem; font-weight:500; margin-top:8px;">loading...</div>
             </div>
         </header>
         <div class="main-grid">
             <div style="display:flex; flex-direction:column; gap:1.4rem;">
-                <section class="panel">
+                <section class="panel zen-hide">
                     <h3 style="color:var(--text-dim); margin-bottom: 1rem;">Focus</h3>
                     <input type="text" id="new-task" placeholder="What needs doing?">
                     <ul id="task-list"></ul>    
@@ -62,11 +62,11 @@
                   </audio>
                 </section>
             </div>
-            <section class="panel scratchpad-card">
+            <section class="panel scratchpad-card zen-hide">
                 <h3 style="color: var(--text-dim); margin-bottom:1rem;">Scratchpad</h3>
                 <textarea id="notes-area" placeholder="Type here..."></textarea>
             </section>
-            <div style="display:flex; flex-direction:column; gap:1.4rem;">
+            <div class="zen-hide" style="display:flex; flex-direction:column; gap:1.4rem;">
                 <section class = "panel" style="display:flex; flex-direction:column; align-items:center;">
                     <h3 style= "color: var(--text-dim); margin-bottom:1rem;">Analog</h3>
                     <div class="clock-face">
