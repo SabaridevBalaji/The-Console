@@ -106,7 +106,7 @@ textarea{
 }
 
 @media(max-width:768px){
-    .main-grid{grid-template-column:1fr;}
+    .main-grid{grid-template-columns:1fr;}
 }
 
 .clock-face{
@@ -330,4 +330,8 @@ body.zen-active .main-grid .panel:not(.zen-hide){
     border-color:transparent;
     z-index:100;
 
+}
+
+body.zen-active .main-grid .panel:not(.zen-hide)> h3:first-child{
+    display:none;
 }
