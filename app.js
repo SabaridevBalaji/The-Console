@@ -317,10 +317,10 @@ crtBtn.addEventListener('click', ()=>{
     document.body.classList.toggle('crt-active');
     if(document.body.classList.contains('crt-active')){
         crtBtn.textContent='CRT: ON';
-        crtBtn.style.color='#EDEDF0';
+        crtBtn.style.color='var(--text-main)';
 
     } else{
         crtBtn.textContent='CRT';
-        crtBtn.style.color='#8A8A93';
+        crtBtn.style.color='var(--text-dim)';
     }
 });
