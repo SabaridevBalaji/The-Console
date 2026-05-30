@@ -319,12 +319,19 @@ body.zen-active .zen-hide{
 }
 
 body.zen-active #flow-time{
-    font-size:6rem;
-    margin:3rem 0;
-
+    font-size:8rem !important;
+    margin: 3rem 0 !important;
 }
 
-body.zen-active .panel:not(.zen-hide){
+body.zen-active .main-grid .panel:not(.zen-hide){
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:100%;
+    max-width:600px;
     background-color:transparent;
-    border-color:transparent;
+    border-color:transpernt;
+    z-index:100;
+
 }
