@@ -289,6 +289,9 @@ zenBtn.addEventListener('click',()=>{
 const rainAudio=document.getElementById('rain-audio');
 const rainSlider=document.getElementById('rain-slider');
 
+rainAudio.loop=false;
+
+
 
 rainSlider.addEventListener('input',(e)=>{
     rainAudio.volume=e.target.value;
@@ -296,5 +299,15 @@ rainSlider.addEventListener('input',(e)=>{
         rainAudio.play().catch(()=> console.log('Drop mixkit-light-rain-loop-1253.wav into your folder'));
     } else{
         rainAudio.pause();
+    }
+});
+
+rainAudio.addEventListener('timeupdate'()=>{
+    if(rainAudio.duration){
+        if(rainAudio.currentTime>= rainAudio.duration-0.4){
+            rainAudio.currentTime=0;
+            rainAudio.play();
+
+        }
     }
 });
