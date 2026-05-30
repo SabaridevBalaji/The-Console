@@ -302,7 +302,7 @@ rainSlider.addEventListener('input',(e)=>{
     }
 });
 
-rainAudio.addEventListener('timeupdate'()=>{
+rainAudio.addEventListener('timeupdate',()=>{
     if(rainAudio.duration){
         if(rainAudio.currentTime>= rainAudio.duration-0.4){
             rainAudio.currentTime=0;
