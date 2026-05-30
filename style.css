@@ -298,3 +298,15 @@ textarea{
     margin-top:0.5rem;
     padding-bottom:0;
 }
+
+.zen-hide{
+    transition:opacity 0.5s ease, filter 0.5s ease ; 
+}
+
+
+#flow-time{
+    transition:font-size 0.5s ease,margin 0.5s ease;
+}
+.panel{
+    transition:background-color 0.5s ease, border-color 0.5s ease;
+}
