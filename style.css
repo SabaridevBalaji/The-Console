@@ -179,7 +179,7 @@ textarea{
     gap:16px;
 }
 
-#volume-slider{
+#volume-slider, .mix-slider{
     -webkit-appearance: none;
     appearance: none;
     width:70px;
@@ -192,9 +192,7 @@ textarea{
     padding:0;
 
 }
-
-
-#volume-slider::-webkit-slider-thumb{
+#volume-slider::-webkit-slider-thumb,.mix-slider::-webkit-slider-thumb{
     -webkit-appearance: none;
     width:8px;
     height:8px;
@@ -204,10 +202,8 @@ textarea{
     transition:background 0.15s ease;
 
 }
-
-#volume-slider::-webkit-slider-thumb:hover{
+#volume-slider::-webkit-slider-thumb:hover,.mix-slider.mix-slider::-webkit-slider-thumb:hover{
     background:var(--text-main);
-
 }
 
 #music-toggle{
