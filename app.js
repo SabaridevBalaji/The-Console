@@ -268,3 +268,19 @@ flowReset.addEventListener('click',()=>{
     alarmAudio.currentTime=0;
     flowPlay.textContent='Start';
 });
+
+const zenBtn=document.getElementById('zen-btn');
+zenBtn.addEventListener('click',()=>{
+    document.body.classList.toggle('zen-active');
+    if(document.body.classList.contains('zen-active')){
+        zenBtn.textContent='EXIT';
+        zenBtn.style.color= #aa3333;
+        zenBtn.style.borderColor='#aa3333';
+        zenBtn.style.borderColor='#aa3333';
+
+    }else{
+        zenBtn.textContent='ZEN';
+        zenBtn.style.color='var(--text-dim)';
+        zenBtn.style.borderColor='transparent';
+    }
+});
