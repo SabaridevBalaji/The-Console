@@ -339,3 +339,28 @@ body.zen-active .main-grid .panel:not(.zen-hide){
 body.zen-active .main-grid .panel:not(.zen-hide)> h3:first-child{
     display:none;
 }
+
+@keyframes crt-flicker{
+    0%{opacity:0.95;}
+    50%{opacity:0.85;}
+    100%{opacity:0.95;}
+}
+body.crt-active::after{
+    content:" ";
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:linear-gradient(#00000000 50%, #00000026 50%);
+    background-size:100% 4px;
+    pointer-events:none;
+    z-index:999;
+    animation:crt-flicker 0.15s infinite;
+}
+
+body.crt-active{
+
+    text-shadow:0px 0px 2px #ffffff66;
+}
