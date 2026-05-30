@@ -314,11 +314,11 @@ textarea{
 body.zen-active .zen-hide{
     opacity:0;
     pointer-events:none;
-    filter:blue(10px);
+    filter:blur(10px);
 
 }
 
-body.zen-active #flowtime{
+body.zen-active #flow-time{
     font-size:6rem;
     margin:3rem 0;
 
