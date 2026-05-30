@@ -311,3 +311,16 @@ rainAudio.addEventListener('timeupdate',()=>{
         }
     }
 });
+
+const crtBtn=document.getElementById('crt-btn');
+crtBtn.addEventListener('click', ()=>{
+    document.body.classList.toggle('crt-active');
+    if(document.body.classList.contains('crt-active')){
+        crtBtn.textContent='CRT: ON';
+        crtBtn.style.color='#EDEDF0';
+
+    } else{
+        crtBtn.textContent='CRT';
+        crtBtn.style.color='#8A8A93';
+    }
+});
