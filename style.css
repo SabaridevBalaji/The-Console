@@ -310,3 +310,21 @@ textarea{
 .panel{
     transition:background-color 0.5s ease, border-color 0.5s ease;
 }
+
+body.zen-active .zen-hide{
+    opacity:0;
+    pointer-events:none;
+    filter:blue(10px);
+
+}
+
+body.zen-active #flowtime{
+    font-size:6rem;
+    margin:3rem 0;
+
+}
+
+body.zen-active .panel:not(.zen-hide){
+    background-color:transparent;
+    border-color:transparent;
+}
