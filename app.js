@@ -302,15 +302,14 @@ rainSlider.addEventListener('input',(e)=>{
     }
 });
 
-rainAudio.addEventListener('timeupdate',()=>{
+setInterval(()=>{
     if(rainAudio.duration){
-        if(rainAudio.currentTime>= rainAudio.duration-0.4){
-            rainAudio.currentTime=0;
+        if(rainAudio.currentTime>=rainAudio.duration-0.5){
+            rainAudio.currentTime=0.1;
             rainAudio.play();
-
         }
     }
-});
+},50);
 
 const crtBtn=document.getElementById('crt-btn');
 crtBtn.addEventListener('click', ()=>{
