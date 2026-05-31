@@ -420,84 +420,123 @@ const cliContainer=document.getElementById('cli-container');
 const cliInput=document.getElementById('cli-input');
 
 document.addEventListener('keydown',(e)=>{
-    if(e.altKey&&e.key.toLowerCase()==='c'){
+    if(e.altKey && e.key.toLowerCase()==='c'){
         e.preventDefault();
         cliContainer.classList.toggle('cli-visible');
+        document.body.classList.toggle('cli-open');
         if(cliContainer.classList.contains('cli-visible')){
             cliInput.value='';
             cliInput.focus();
-
-        } else{
+        }else{
             cliInput.blur();
         }
     }
 });
+
 cliInput.addEventListener('keypress',(e)=>{
-    if(e.key==='Enter'&& cliInput.value.trim()!==''){
-        const args=cliInput.value.trim().toLowerCase().split(' ');
-        const command=  args[0];
-        const value= args[1];
+    if(e.key==='Enter' && cliInput.value.trim()!==''){
+        const args= cliInput.value.trim().toLowerCase().split(' ');
+        const command=args[0];
+        const value=args[1];
         switch(command){
-            case'focus':
-                let mins= parseInt(value);
-                if(!isNaN(mins)&&mins>0){
-                    if(isFlowing){flowPlay.click();}
-                    flowInput.value=mins;
-                    flowInput.dispatchEvent(new Event('change'));
-                    flowPlay.click();
-                    cliInput.value=`> Focus protocol initiated: ${mins} minutes.`;
+            case 'focus':
+                    let mins=parseInt(value);
+                    if(!isNaN(mins)&& mins>0){
+                        if(isFlowing){flowPlay.click();}
+                        flowInput.value=mins;
+                        flowInput.dispatchEvent(new Event('change'));
+                        flowPlay.click();
+                        cliInput.value=`> Focus protocol initiated: ${mins} minutes`;
+
+                    }else{
+                        cliInput.value=`> Error: Provide a value number(e.g., focus 67)`;
+                    }
+                    break;
+            case 'rain':
+                let vol=parseInt(value);
+                if(!isNaN(vol)&& vol>=0 && vol<=100){
+                    let mappedVol=vol/100;
+                    rainSlider.value=mappedVol;
+                    rainSlider.dispatchEvent(new Event('input'));
+                    cliInput.value=`> Ambient rain set to ${vol}%`;
 
                 }else{
-                    cliInput.value=`> Error: Provide a valid number(e.g., focus 67)`;
+                    cliInput.value=`> Error: Provide volume 0-100(e.g., rain 67)`;
                 }
                 break;
-                case'rain':
-                    let vol= parseInt(value);
-                    if(!isNaN(vol)&& vol>=0 &&vol<=100){
-                        let mappedVol=vol/100;
-                        rainSlider.value=mappedVol;
-                        rainSlider.dispatchEvent(new Event('input'));
-                        cliInput.value=`> Ambient rain set to ${vol}%`;
 
-                    }else{
-                        cliInput.value=`> Error: Provide volume 0-100(e.g., rain 67)`;
+            case 'lofi':
+                let lofiVol=parseInt(value);
+                if(!isNaN(lofiVol)&& lofiVol>=0 && lofiVol<= 100){
+                    let mappedLofi=lofiVol/100;
+                    volumeSlider.value=mappedLofi;
+                    volumeSlider.dispatchEvent(new Event('input'));
+                    if(bgAudio.paused && mappedLofi>0){
+                        musicToggle.click();
+
+                    }else if (!bgAudio.paused && mappedLofi===0){
+                        musicToggle.click();
                     }
-                    break;
+                    cliInput.value=`> Lofi radio volume set to ${lofiVol}%`;
 
-                case'theme':
-                    if(value==='crt'){
-                        crtBtn.click();
-                        cliInput.value='> CRT filter toggled';
+                }else{
+                    cliInput.value=`> Error: Provide volume 0-100 (e.g., lofi 67)`;
 
-                    }else{
-                        cliInput.value='> Error: Valid Themes are [crt]';
+                }
+                break;
+            case 'zen':
+                zenBtn.click();
+                cliInput.value='> Zen mode toggled';
+                break;
+            
+            case'theme':
+                if(value==='crt'){
+                    crtBtn.click();
+                    cliInput.value='> CRT filter toggled';
+
+                }else if (value==='light'){
+                    if(!document.body.classList.contains('vanilla-theme')){
+                        themeBtn.click();
                     }
-                    break;
-                case 'clear':
-                    if(value==='scratchpad'){
-                        const textarea=document.getElementById('notes-area');
-                        textarea.value='';
-                        textarea.dispatchEvent(new Event('input'));
-                        cliInput.value='> Scratchpad memory wiped';
-                        
-                    }else{
-                        cliInput.value='> Error: Did you mean "clear scratchpad"?';
+                    cliInput.value='> Light theme activated';
 
+                }else if (value==='dark'){
+                    if(document.body.classList.contains('vanilla-theme')){
+                        themeBtn.click();
                     }
-                    break;
-                case'strict':
-                    strictBtn.click();
-                    cliInput.value=`> Strict Mode toggled`;
-                    break;
-                default:
-                    cliInput.value= `> Command not recognized: ${command}`;
+                    cliInput.value='> Dark theme activatedd';
+                } else{
+                    cliInput.value='> Error: Valid Themes are [crt, light, dark]';
+
+                }
+                break;
+            case'clear':
+                if(value==='scratchpad'){
+                    const textarea=document.getElementById('notes-area');
+                    textarea.value='';
+                    textarea.dispatchEvent(new Event('input'));
+                    cliInput.value='> Scratchpad memory wiped';
+                }else{
+                    cliInput.value='> Error: Did you mean "clear scratchpad"?';
+
+                }
+                break;
+            case 'strict':
+                strictBtn.click();
+                cliInput.value=`> Strict Mode toggled`;
+                break;
+
+            default:
+                cliInput.value=`> Command not recognized: ${command}`;
+
         }
         setTimeout(()=>{
             if(cliContainer.classList.contains('cli-visible')){
                 cliContainer.classList.remove('cli-visible');
+                document.body.classList.remove('cli-open');
                 cliInput.blur();
                 cliInput.value='';
             }
-        }, 1500);
+        }, 3500); 
     }
 });
