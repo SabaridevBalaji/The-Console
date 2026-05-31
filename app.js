@@ -362,3 +362,54 @@ window.addEventListener('blur',()=>{
         
     }
 });
+
+function logDeepWork(minutes){
+    let heatmapData=JSON.parse(localStorage.getItem('deep_work'))||{};
+    const today= new Date().toISOString().split('T')[0];
+    if(heatmapData[today]){
+        heatmapData[today]+=minutes;
+    }else{
+        heatmapData[today]=minutes;
+    }
+    localStorage.setItem('deep_work',JSON.stringify(heatmapData));
+    renderHeatmap();
+}   
+
+function renderHeatmap(){
+    const container=document.getElementById('heatmap-container');
+    if(!container)return;
+    container.innerHTML='';
+    let heatmapData=JSON.parse(localStorage.getItem('deep_work'))||{};
+    for(let i=6;i>=0; i--){
+        let d=new Date();
+        d.setDate(d.getDate()-i);
+        let dateStr=d.toISOString().split('T')[0];
+         let square=document.createElement('div');
+        square.style.width='16px';
+        square.style.height='16px';
+        square.style.borderRadius='3px';
+        square.title=`${mins} mins on ${dateStr}`;
+
+        if (mins===0){
+            square.style.backgroundColor='transparent';
+            square.style.border='1px solid var(--text-dim)';
+            square.style.opacity='0.3';
+        } else if(mins<50){
+            square.style.backgroundColor='#4a1515';
+            square.style.border='none';
+        }else if(mins<100){
+            square.style.backgroundColor= '#7a1c1c';
+            square.style.border='none';
+
+        }else if(mins<150){
+            square.style.backgroundColor='#a32a2a';
+            square.style.border='none';
+        }else{
+            square.style.backgroundColor='#aa3333';
+            square.style.border='none';
+            square.style.boxShadow='0 0 8px #aa333366';
+        }
+        container.appendChild(square);
+    }
+}
+renderHeatmap();
