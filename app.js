@@ -324,3 +324,33 @@ crtBtn.addEventListener('click', ()=>{
     }
 });
 
+const strictBtn=document.getElementById('strict-btn');
+let isStrict=false;
+strictBtn.addEventListener('click',()=>{
+    isStrict=!isStrict;
+    if(isStrict){
+        strictBtn.style.color='#aa3333';
+        strictBtn.style.borderColor='#aa3333';
+        strictBtn.textContent='Strict: ON';
+
+        
+    }else{
+        strictBtn.style.color='var(--text-dim)';
+        strictBtn.style.borderColor='transparent';
+        strictBtn.textContent='Strict';
+        document.body.classList.remove('strict-violation');
+    }
+});
+document.addEventListener('visibilitychange',()=>{
+    if(isStrict &&isFlowing &&document.hidden){
+        document.body.classList.add('strict-violation');
+        toggleRadio(false,true);
+        alarmAudio.currentTime=0;
+        alarmAudio.volume=1.0;
+        alarmAudio.play();
+    }
+    else if(!document.hidden){
+        document.body.classList.remove('strict-violation');
+    }
+});
+
