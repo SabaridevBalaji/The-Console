@@ -238,22 +238,23 @@ musicToggle.addEventListener('click',()=>{
 
 flowPlay.addEventListener('click',()=>{
     if(!isFlowing){
-        clearInterval(flowTimer);
-        toggleRadio(false,true);
-        flowPlay.textContent='Start';
-    } else{
-        flowTimer=setInterval(() => {
+        flowTimer=setInterval(()=>{
             flowTime--;
             updateFlow();
             if(flowTime<=0){
                 clearInterval(flowTimer);
                 toggleRadio(false,true);
-                alarmAudio.play().catch(()=> console.log('add carchime.wav to your foler'));
+                alarmAudio.play().catch(()=> console.log('add carchime.wav to your foldere'));
                 flowPlay.textContent='Done';
             }
-        }, 1000);
+        },1000);
         toggleRadio(true,false);
         flowPlay.textContent='Pause';
+
+    }else{
+        clearInterval(flowTimer);
+        toggleRadio(false,true);
+        flowPlay.textContent='Start';
     }
     isFlowing=!isFlowing;
 });
