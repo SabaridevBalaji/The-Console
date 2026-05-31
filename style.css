@@ -432,5 +432,12 @@ body.strict-violation{
     margin:0;
     padding:0;
     font-family:monospace;
-    
+
+}
+
+.dashboard-wrapper{
+    transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+body.cli-open .dashboard-wrapper{
+    transform: translateY(45px);
 }

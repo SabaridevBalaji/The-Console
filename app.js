@@ -420,7 +420,7 @@ const cliContainer=document.getElementById('cli-container');
 const cliInput=document.getElementById('cli-input');
 
 document.addEventListener('keydown',(e)=>{
-    if(e.key==='`'|| e.key==='~'){
+    if(e.altKey&&e.key.toLowerCase()==='c'){
         e.preventDefault();
         cliContainer.classList.toggle('cli-visible');
         if(cliContainer.classList.contains('cli-visible')){
