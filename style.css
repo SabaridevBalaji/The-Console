@@ -436,8 +436,9 @@ body.strict-violation{
 }
 
 .dashboard-wrapper{
-    transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    transition:margin-top 0.3s cubic-bezier(0.4,0,0.2,1);
+    transform:none !important;
 }
 body.cli-open .dashboard-wrapper{
-    transform: translateY(45px);
+    margin-top:55px;
 }
