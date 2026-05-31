@@ -237,6 +237,7 @@ musicToggle.addEventListener('click',()=>{
 });
 
 flowPlay.addEventListener('click',()=>{
+    document.body.classList.remove('strict-violation');
     if(!isFlowing){
         flowTimer=setInterval(()=>{
             flowTime--;
@@ -346,14 +347,13 @@ strictBtn.addEventListener('click',()=>{
 window.addEventListener('blur',()=>{
     if(isStrict && isFlowing){
         document.body.classList.add('strict-violation');
-        toggleRadio(false,true);
-        alarmAudio.currentTime=0;
-        alarmAudio.volume=1.0;
-        alarmAudio.play().catch(e=> console.log("Broweser blocked audio"));
-
+            toggleRadio(false,true);
+            alarmAudio.currentTime=0;
+            alarmAudio.volume=1.0;
+            alarmAudio.play().catch(e=> console.log("Browser blocked audio"));
+            clearInterval(flowTimer);
+            isFlowing=false;
+            flowPlay.textContent='Start';
+        
     }
-});
-
-window.addEventListener('focus',()=>{
-    document.body.classList.remove('strict-violation');
 });
