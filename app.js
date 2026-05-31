@@ -341,16 +341,18 @@ strictBtn.addEventListener('click',()=>{
         document.body.classList.remove('strict-violation');
     }
 });
-document.addEventListener('visibilitychange',()=>{
-    if(isStrict &&isFlowing &&document.hidden){
+
+window.addEventListener('blur',()=>{
+    if(isStrict && isFlowing){
         document.body.classList.add('strict-violation');
         toggleRadio(false,true);
         alarmAudio.currentTime=0;
         alarmAudio.volume=1.0;
-        alarmAudio.play();
-    }
-    else if(!document.hidden){
-        document.body.classList.remove('strict-violation');
+        alarmAudio.play().catch(e=> console.log("Broweser blocked audio"));
+
     }
 });
 
+window.addEventListener('focus',()=>{
+    document.body.classList.remove('strict-violation');
+});
