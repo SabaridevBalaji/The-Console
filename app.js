@@ -333,7 +333,7 @@ strictBtn.addEventListener('click',()=>{
     if(isStrict){
         strictBtn.style.color='#aa3333';
         strictBtn.style.borderColor='#aa3333';
-        strictBtn.textContent='Strict: ON';
+        strictBtn.textContent='Strict';
 
         
     }else{
