@@ -238,6 +238,9 @@ musicToggle.addEventListener('click',()=>{
 
 flowPlay.addEventListener('click',()=>{
     document.body.classList.remove('strict-violation');
+    alarmAudio.pause();
+    alarmAudio.currentTime=0;
+    alarmAudio.loop=false;
     if(!isFlowing){
         flowTimer=setInterval(()=>{
             flowTime--;
@@ -245,6 +248,7 @@ flowPlay.addEventListener('click',()=>{
             if(flowTime<=0){
                 clearInterval(flowTimer);
                 toggleRadio(false,true);
+                alarmAudio.loop=true;
                 alarmAudio.play().catch(()=> console.log('add carchime.wav to your foldere'));
                 flowPlay.textContent='Done';
             }
@@ -350,6 +354,7 @@ window.addEventListener('blur',()=>{
             toggleRadio(false,true);
             alarmAudio.currentTime=0;
             alarmAudio.volume=1.0;
+            alarmAudio.loop=true;
             alarmAudio.play().catch(e=> console.log("Browser blocked audio"));
             clearInterval(flowTimer);
             isFlowing=false;
