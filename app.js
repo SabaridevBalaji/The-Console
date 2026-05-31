@@ -385,6 +385,7 @@ function renderHeatmap(){
         let d=new Date();
         d.setDate(d.getDate()-i);
         let dateStr=d.toISOString().split('T')[0];
+        let mins= heatmapData[dateStr]||0;
          let square=document.createElement('div');
         square.style.width='16px';
         square.style.height='16px';
