@@ -251,6 +251,7 @@ flowPlay.addEventListener('click',()=>{
                 alarmAudio.loop=true;
                 alarmAudio.play().catch(()=> console.log('add carchime.wav to your foldere'));
                 flowPlay.textContent='Done';
+                logDeepWork(customMins);
             }
         },1000);
         toggleRadio(true,false);
