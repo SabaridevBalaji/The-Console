@@ -444,7 +444,7 @@ body.cli-open .dashboard-wrapper{
 }
 
 
-#docs-modal{
+#docs-modal, #settings-modal{
     position:fixed;
     top:0;
     left:0;
@@ -460,7 +460,7 @@ body.cli-open .dashboard-wrapper{
     transition:opacity 0.3s ease;
     backdrop-filter:blur(4px)
 }
-#docs-modal.modal-visible{
+#docs-modal.modal-visible, #settings-modal.modal-visible{
     opacity:1;
     pointer-events:auto;
 
@@ -472,7 +472,7 @@ body.cli-open .dashboard-wrapper{
     transition:transform 0.3s ease;
 
 }
-#docs-modal.modal-visible .modal-content{
+#docs-modal.modal-visible .modal-content, #settings-modal.modal-visible .modal-content{
     transform:translateY(0);
 }
 .cmd-list li{
