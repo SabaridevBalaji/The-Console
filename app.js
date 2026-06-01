@@ -525,6 +525,11 @@ cliInput.addEventListener('keypress',(e)=>{
                 strictBtn.click();
                 cliInput.value=`> Strict Mode toggled`;
                 break;
+            
+            case 'help':
+                    docsModal.classList.add('modal-visible');
+                    cliInput.value='> System documentation opened.';
+                    break;
 
             default:
                 cliInput.value=`> Command not recognized: ${command}`;
