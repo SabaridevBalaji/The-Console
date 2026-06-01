@@ -39,7 +39,20 @@
     <div id="settings-modal" class="modal-hidden">
         <div class="modal-content panel">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-                <h2></h2>
+                <h2 style="color:var(--text-main);">Settings</h2>
+                <button id="close-settings" class="time-toggle" style="padding:4px 10px;">✖</button>
+
+            </div>
+            <div style="display:flex; flex-direction:column; gap:1.2rem;">
+                <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
+                    <input type="checkbox" id="setting-auto-play" style="width:auto; margin:0; padding:0;">
+                    <span style="color:var(--text-main); font-size:0.95rem;">Auto-play radio when Flow starts</span>
+
+                </label>
+                <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
+                    <input type="checkbox" id="setting-auto-pause" style="width:auto; margin:0; padding:0;">
+                    <span style="color:var(--text-main); font-size:0.95rem;">Auto-pause when Flow pauses</span>
+                </label>
             </div>
         </div>
     </div>
