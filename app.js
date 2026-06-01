@@ -541,10 +541,10 @@ cliInput.addEventListener('keypress',(e)=>{
     }
 });
 
-const docsModal=document.getElementsById('docs-modal');
+const docsModal=document.getElementById('docs-modal');
 const helpbtn=document.getElementById('help-btn');
 const closeDocs=document.getElementById('close-docs');
-helpbtn.addEventListener('click',()=> docsModal.classList.add('model-visible'));
+helpbtn.addEventListener('click',()=> docsModal.classList.add('modal-visible'));
 closeDocs.addEventListener('click',()=> docsModal.classList.remove('modal-visible'));
 
 docsModal.addEventListener('click',(e)=>{
