@@ -557,3 +557,33 @@ docsModal.addEventListener('click',(e)=>{
         docsModal.classList.remove('modal-visible');
     }
 });
+
+
+const settingsModal=document.getElementById('settings-modal');
+const settingsBtn=document.getElementById('settings-btn');
+const closeSettings= document.getElementById('close-settings');
+const autoPlayCheck= document.getElementById('setting-auto-play');
+const autoPauseCheck=document.getElementById('setting-auto-pause');
+let autoPlayRadio= localStorage.getItem('auto_play_radio')==='true';
+let autoPauseRadio= localStorage.getItem('auto_pause_radio')==='true';
+
+autoPlayCheck.checked=autoPlayRadio;
+autoPauseCheck.checked=autoPauseRadio;
+autoPlayCheck.addEventListener('change',(e)=>{
+    autoPlayRadio=e.target.checked;
+    localStorage.setItem('auto_play_radio', autoPlayRadio);
+});
+
+autoPauseCheck.addEventListener('change',(e)=>{
+    autoPauseRadio= e.target.checked;
+    localStorage.setItem('auto_pause_radio', autoPauseRadio);
+
+});
+
+settingsBtn.addEventListener('click',()=> settingsModal.classList.add('modal-visible'));
+closeSettings.addEventListener('click',()=> settingsModal.classList.remove('modal-visible'));
+settingsModal.addEventListener('click',(e)=>{
+    if(e.target===  settingModal){
+        settingsModal.classList.remove('modal-visible');
+    }
+});
