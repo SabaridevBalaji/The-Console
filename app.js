@@ -247,19 +247,20 @@ flowPlay.addEventListener('click',()=>{
             updateFlow();
             if(flowTime<=0){
                 clearInterval(flowTimer);
-                toggleRadio(false,true);
+                if(autoPauseCheck) toggleRadio(false,true);
+                
                 alarmAudio.loop=true;
                 alarmAudio.play().catch(()=> console.log('add carchime.wav to your foldere'));
                 flowPlay.textContent='Done';
                 logDeepWork(customMins);
             }
         },1000);
-        toggleRadio(true,false);
+        if(autoPlayRadio) toggleRadio(true,false);
         flowPlay.textContent='Pause';
 
     }else{
         clearInterval(flowTimer);
-        toggleRadio(false,true);
+        if(autoPauseRadio) toggleRadio(false,true);
         flowPlay.textContent='Start';
     }
     isFlowing=!isFlowing;
