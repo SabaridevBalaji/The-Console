@@ -460,3 +460,39 @@ body.cli-open .dashboard-wrapper{
     transition:opacity 0.3s ease;
     backdrop-filter:blur(4px)
 }
+#docs-modal.modal-visible{
+    opacity:1;
+    pointer-events:auto;
+
+}
+.modal-content{
+    width:90%;
+    max-width:500px;
+    transform:translateY(20px);
+    transition:transform 0.3s ease;
+
+}
+#docs-modal.modal-visible .modal-content{
+    transform:translateY(0);
+}
+.cmd-list li{
+    font-size:0.95rem;
+    border-bottom:var(--border-line);
+
+    padding:10px 0;
+
+}
+
+.cmd-list li:last-child{
+    border-bottom:none;
+
+}
+
+.cmd-list code{
+    color:var(--text-main);
+    font-weight:bold;
+    font-family:monospace;
+    padding:2px 6px;
+    border-radius:4px;
+    background:var(--bg-color);
+}
