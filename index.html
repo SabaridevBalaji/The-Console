@@ -96,14 +96,15 @@
                     <button id="strict-btn" class="time-toggle" style="font-size:0.85rem; padding:6px 18px;">Strict</button>
                     
                   </div>
-                 <div class="radio-player-container">
+                 <div class="radio-player-container" style="position:relative;">
                   <div class="radio-info">
-                    <div style="display:flex; align-items:center; gap:10px;">
+                    
                         <span class="radio-title">Lofi Radio</span>
-                        <canvas id="eq-canvas" width="64" height="16" style="opacity:0.9;"></canvas>
+                        <span id="player-status">Paused</span>
+                  </div>
+                  <div style="position:absolute; left:50%; transform:translateX(-50%);">
+                    <canvas id="eq-canvas" width="64" height="16" style="opacity:0.9;"></canvas>
 
-                    </div>
-                    <span id="player-status">Paused</span>
                   </div>
                     <div class="radio-controls">
                         <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.4">
