@@ -295,7 +295,7 @@ flowPlay.addEventListener('click',()=>{
     alarmAudio.currentTime=0;
     alarmAudio.loop=false;
     isFlowing=!isFlowing;
-    if(!isFlowing){
+    if(isFlowing){
         flowTimer=setInterval(()=>{
             flowTime--;
             updateFlow();
