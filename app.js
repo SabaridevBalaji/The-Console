@@ -245,6 +245,11 @@ function initAudioContent(){
     analyser.fftSize=64;
     bufferLength=analyser.frequencyBinCount;
     dataArray = new Uint8Array(bufferLength);
+    source=audioCtx.createMediaElementSource(bgAudio);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    isAudioInitialized=true;
+    drawEQ();
 }
 musicToggle.addEventListener('click',()=>{
     toggleRadio();
