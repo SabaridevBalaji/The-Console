@@ -186,6 +186,13 @@ function updateFlow(){
     const s=String(flowTime%60).padStart(2,'0');
     flowDisplay.textContent=`${m}:${s}`;
 
+    if(isFlowing){
+        document.title=`(${m}:${s}) - Focus`;
+
+    }else{
+        document.title= `The Console`;
+    }
+
 }
 
 flowInput.addEventListener('input',()=>{
