@@ -227,6 +227,7 @@ function toggleRadio(forcePlay=false,forcePause=false){
         musicToggle.textContent='▶';
         playerStatus.textContent='Paused';
     } else{
+        initAudioContent();
         bgAudio.play().catch(()=> console.log('Connecting to stream....'));
         musicToggle.textContent="⏸";
         playerStatus.textContent='Live Stream';
