@@ -294,18 +294,21 @@ flowPlay.addEventListener('click',()=>{
     alarmAudio.pause();
     alarmAudio.currentTime=0;
     alarmAudio.loop=false;
+    isFlowing=!isFlowing;
     if(!isFlowing){
         flowTimer=setInterval(()=>{
             flowTime--;
             updateFlow();
             if(flowTime<=0){
                 clearInterval(flowTimer);
-                if(autoPauseCheck) toggleRadio(false,true);
+                if(autoPauseRadio) toggleRadio(false,true);
                 
                 alarmAudio.loop=true;
                 alarmAudio.play().catch(()=> console.log('add carchime.wav to your foldere'));
                 flowPlay.textContent='Done';
                 logDeepWork(customMins);
+                isFlowing=false;
+                updateFlow();
             }
         },1000);
         if(autoPlayRadio) toggleRadio(true,false);
@@ -316,7 +319,7 @@ flowPlay.addEventListener('click',()=>{
         if(autoPauseRadio) toggleRadio(false,true);
         flowPlay.textContent='Start';
     }
-    isFlowing=!isFlowing;
+    updateFlow();
 });
 flowReset.addEventListener('click',()=>{
     clearInterval(flowTimer);
