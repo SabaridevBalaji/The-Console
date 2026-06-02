@@ -269,11 +269,13 @@ function drawEQ(){
         let barHeight=(dataArray[i]/255)* eqCanvas.height;
         let x= i*4;
         
-        if(barHeight> eqCanvas.height*0.7;){
+        if(barHeight> eqCanvas.height*0.7){
             canvasCtx.fillStyle='aa3333';
         }else{
             canvasCtx.fillStyle='#EDEDf0';
         }
+        let finalHeight=Math.max(barHeight, 2);
+        canvasCtx.fillRect(x, eqCanvas.height -finalHeight, 2,finalHeight);
     }
 }
 musicToggle.addEventListener('click',()=>{
