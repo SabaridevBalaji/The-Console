@@ -503,3 +503,12 @@ body.cli-open .dashboard-wrapper{
     border-radius:4px;
     background:var(--bg-color);
 }
+
+body.zen-active{
+    align-items: flex-start !important;
+
+}
+body.zen-active .top-bar{
+    background-color:transparent;
+    border-color:transparent;
+}
