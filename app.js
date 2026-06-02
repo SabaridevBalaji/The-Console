@@ -251,6 +251,19 @@ function initAudioContent(){
     isAudioInitialized=true;
     drawEQ();
 }
+function drawEQ(){
+    requestAnimationFrame(drawEQ);
+    if(bgAudio.paused){
+        canvasCtx.clearRect(0,0,eqCanvas.width, eqCanvas.height);
+        canvasCtx.fillstyle='#8A8A93';
+        for(let i= 1; i<16;i++){
+            canvasCtx.fillRect(i*4, eqCanvas.height - 2,2,2);
+        }
+        return;
+    }
+
+    analyser.get
+}
 musicToggle.addEventListener('click',()=>{
     toggleRadio();
 });
