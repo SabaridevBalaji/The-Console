@@ -262,7 +262,12 @@ function drawEQ(){
         return;
     }
 
-    analyser.get
+    analyser.getByteFrequencyData(dataArray);
+    canvasCtx.clearRect(0,0)
+
+    for(let i= 0; i <16; i++){
+        
+    }
 }
 musicToggle.addEventListener('click',()=>{
     toggleRadio();
