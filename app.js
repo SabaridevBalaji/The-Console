@@ -233,6 +233,19 @@ function toggleRadio(forcePlay=false,forcePause=false){
         playerStatus.textContent='Live Stream';
     }
 }
+const eqCanvas=document.getElementById('eq-canvas');
+const canvasCtx=eqCanvas.getContext('2d');
+let audioCtx, analyser, source, dataArray, bufferLength;
+let isAudioInitialized=false;
+function initAudioContent(){
+    if(isAudioInitialized) return;
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    audioCtx= new AudioContext();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize=64;
+    bufferLength=analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+}
 musicToggle.addEventListener('click',()=>{
     toggleRadio();
 });
