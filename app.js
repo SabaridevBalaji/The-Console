@@ -577,7 +577,10 @@ cliInput.addEventListener('keypress',(e)=>{
                     docsModal.classList.add('modal-visible');
                     cliInput.value='> System documentation opened.';
                     break;
-
+                    
+            case 'sudo':
+                    cliInput.value='> Nice try ;)';
+                    break;
             default:
                 cliInput.value=`> Command not recognized: ${command}`;
 
