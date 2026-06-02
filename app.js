@@ -255,7 +255,7 @@ function drawEQ(){
     requestAnimationFrame(drawEQ);
     if(bgAudio.paused){
         canvasCtx.clearRect(0,0,eqCanvas.width, eqCanvas.height);
-        canvasCtx.fillstyle='#8A8A93';
+        canvasCtx.fillStyle='#8A8A93';
         for(let i= 1; i<16;i++){
             canvasCtx.fillRect(i*4, eqCanvas.height - 2,2,2);
         }
@@ -263,14 +263,14 @@ function drawEQ(){
     }
 
     analyser.getByteFrequencyData(dataArray);
-    canvasCtx.clearRect(0,0)
+    canvasCtx.clearRect(0,0, eqCanvas.width, eqCanvas.height);
 
-    for(let i= 0; i <16; i++){
+    for(let i= 1; i <16; i++){
         let barHeight=(dataArray[i]/255)* eqCanvas.height;
         let x= i*4;
         
         if(barHeight> eqCanvas.height*0.7){
-            canvasCtx.fillStyle='aa3333';
+            canvasCtx.fillStyle='#aa3333';
         }else{
             canvasCtx.fillStyle='#EDEDf0';
         }
