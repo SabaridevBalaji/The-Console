@@ -296,10 +296,12 @@ flowPlay.addEventListener('click',()=>{
     alarmAudio.loop=false;
     isFlowing=!isFlowing;
     if(isFlowing){
+        let targetTime=Date.now()+(flowTime*1000);
         flowTimer=setInterval(()=>{
-            flowTime--;
-            updateFlow();
+            flowTime= Math.round((targetTime- Date.now())/1000);
             if(flowTime<=0){
+                flowTime=0;
+                updateFlow();
                 clearInterval(flowTimer);
                 if(autoPauseRadio) toggleRadio(false,true);
                 
@@ -308,6 +310,8 @@ flowPlay.addEventListener('click',()=>{
                 flowPlay.textContent='Done';
                 logDeepWork(customMins);
                 isFlowing=false;
+                updateFlow();
+            }else{
                 updateFlow();
             }
         },1000);
@@ -643,7 +647,7 @@ autoPauseCheck.addEventListener('change',(e)=>{
 settingsBtn.addEventListener('click',()=> settingsModal.classList.add('modal-visible'));
 closeSettings.addEventListener('click',()=> settingsModal.classList.remove('modal-visible'));
 settingsModal.addEventListener('click',(e)=>{
-    if(e.target===  settingModal){
+    if(e.target===  settingsModal){
         settingsModal.classList.remove('modal-visible');
     }
 });
