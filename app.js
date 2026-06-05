@@ -651,3 +651,129 @@ settingsModal.addEventListener('click',(e)=>{
         settingsModal.classList.remove('modal-visible');
     }
 });
+
+const mediaToggleBtn=document.getElementById('media-mode-toggle');
+const lofiControls=document.getElementById('lofi-controls');
+const localControls=document.getElementById('local-controls');
+const localPlaylistView=document.getElementById('local-playlist-view');
+const eqCanvasEl=document.getElementById('eq-canvas');
+let isLocalMode=false;
+
+mediaToggleBtn.addEventListener('click',()=>{
+    isLocalMode=!isLocalMode;
+    if(isLocalMode){
+        mediaToggleBtn.textContent='Local Player ⟲';
+        lofiControls.style.display='none';
+        eqCanvasEl.style.display='none';
+        localControls.style.display='flex';
+        localPlaylistView.style.display='flex';
+        if(!bgAudio.paused) toggleRadio(false,true);
+        playerStatus.textContent='Ready';
+
+    }else{
+        mediaToggleBtn.textContent='Lofi Radio ⟲';
+        lofiControls.style.display='flex';
+        eqCanvasEl.style.display='block';
+        localControls.style.display='none';
+        localPlaylistView.style.display='none';
+        if(!localAudioEngine.paused){
+            localAudioEngine.pause();
+            localPlayBtn.textContent='▶';
+        }
+        playerStatus.textContent= bgAudio.paused? 'Paused':'Live Stream';
+        
+    }
+});
+
+const folderUpload=document.getElementById('folder-upload');
+const localPlaylistView=document.getElementById('local-playlist');
+const localAudioEngine=document.getElementById('local-audio-engine');
+const localPlayBtn=document.getElementById('local-play');
+const localPrevBtn= document.getElementById('local-prev');
+const localNextBtn= document.getElementById('local-next');
+const localTrackTitle=document.getElementById('local-track-title');
+const localProgressBar=document.getElementById('local-progress-bar');
+const localProgressContainer= document.getElementById('local-progress-container');
+let localTracks=[];
+let currentLocalIndex=0;
+const validAudioExts=['.mp3', '.wav', '.flac', '.ogg', '.m4a'];
+
+folderUpload.addEventListener('change',(e)=>{
+    const files=Array.from(e.target.files);
+    localTracks=files.filer(file=>validAudioExts.some(ext=> file.name.toLowerCase().endsWith(ext)));
+    if(localTracks.length>0){
+        renderLocalPlayList();
+        loadLocalTrack(0);
+
+    }
+});
+
+function renderLocalPlayList(){
+    localPlaylistEl.innerHTML='';
+    localTracks.forEach((track, index)=>{
+        const li=document.createElement('li');
+        li.textContent=track.name;
+        li.addEventListener('click', ()=>{
+            loadLocalTrack(index);
+            localAudioEngine.play();
+            localPlayBtn.textContent='⏸';
+            playerStatus.textContent='Playing Local';
+
+        });
+        localPlaylistEl.appendChild(li);
+    });
+}
+
+function loadLocalTrack(index){
+    currentLocalIndex=index;
+    const file=localTracks[currectLocalIndex];
+    localAudioEngine.src= URL.createObjectURL(file);
+    localTrackTitle.textContent= file.name;
+    Array.from(localPlaylistEl.children).forEach((li, i)=>{
+        li.classList.toggle('active-track', i=== currentLocalIndex);
+
+    });
+
+
+}
+
+localPlayBtn.addEventListener('click',()=>{
+    if(localTracks.length===0) return;
+    if(localAudioEngine.paused){
+        localAudioEngine.play();
+        localPlayBtn.textContent='⏸';
+        playerStatus.textContent='Playing Local';
+
+    }else{
+        localAudioEngine.pause();
+        localPlayBtn.textContent='▶';
+        playerStatus.textContent='Paused';
+    }
+});
+
+localNextBtn.addEventListener('click',()=>{
+    if(localTracks.length=== 0) return;
+    loadLocalTrack((currentLocalIndex+1)% localTrakcs.length);
+    localAudioEngine.play();
+    localPlayBtn.textContent='⏸';
+});
+
+localPrevBtn.addEventListener('click', ()=>{
+    if(localTracks.length===0) return;
+    loadLocalTrack((currentLocalIndex-1+ localTracks.length)%localTracks.length);
+    localAudioEngine.play();
+    localPlayBtn.textContent='⏸';
+});
+
+localAudioEngine.addEventListener('ended',()=> localNextBtn());
+localAudioEngine.addEventListener('timeupdate',()=>{
+    if(localAudioEngine.duration){
+        localProgressBar.style.width=`${(localAudioEngine.currentTime/localAudioEngine.duration)*100}%`;
+
+    }
+});
+localProgressContainer.addEventListener('click',(e)=>{
+    if(localTracks.length===0)return;
+    localAudioEngine.currentTime=(e.offsetX/localProgressContainer.clientWidth)* localAudioEngine.duration;
+});
+
