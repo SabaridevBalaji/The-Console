@@ -1,20 +1,17 @@
-THE CONSOLE
+# the console
 
-i built this because i wanted a minimal dashboard that is lightweightt and functional.
+I built this cause I needed a minimal dashboard that actually works without being bloated or requiring any sign-in. 
 
-it has a clock, a quick focus to-do list, and a scratchpad. all your notes and tasks save automatically to localstorage so you don't lose them if you close the tab. also added a light theme toggle. 
+built for hackclub macondo.
 
-it also has a flow state timer, weather, a lofi radio
-u can toggle between a 24hour clock and 12 hour 
-also features an analog clock
-UPDATE:
-now features and zen mode and a crt mode
-also features an ambient mixer
+## stuff it does
+* timer, analog clock, and a 12h/24h toggle
+* to-do list and a scratchpad (saves to localstorage so u dont lose your stuff)
+* live weather, lofi radio, and an ambient mixer
+* light/dark mode, zen mode, a crt filter
 
-built for hack club macondo
+## credits
 
- Credits & Assets
-Flow State Alarm: [CAR DOOR CHIME.wav](https://freesound.org/s/345067/) by [metrostock99](https://freesound.org/people/metrostock99/) (Licensed under CC0)
-Lofi Stream: Provided by [laut.fm/lofi](https://laut.fm/lofi)
-
-Ambient Rain Loop: [Light Rain Loop](https://mixkit.co/free-sound-effects/rain/) provided by [Mixkit](https://mixkit.co) (Mixkit Sound Effects Free License)
+* alarm: [car door chime](https://freesound.org/s/345067/) by metrostock99 (cc0)
+* radio: [laut.fm/lofi](https://laut.fm/lofi)
+* rain: [light rain loop](https://mixkit.co) by mixkit
