@@ -521,7 +521,7 @@ body.zen-active .top-bar{
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    transition:color 0.2s
+    transition:color 0.2s;
 }
 
 #local-playlist li:hover{color:var(--text-main);}

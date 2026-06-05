@@ -776,4 +776,3 @@ localProgressContainer.addEventListener('click',(e)=>{
     if(localTracks.length===0)return;
     localAudioEngine.currentTime=(e.offsetX/localProgressContainer.clientWidth)* localAudioEngine.duration;
 });
-
