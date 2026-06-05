@@ -686,7 +686,7 @@ mediaToggleBtn.addEventListener('click',()=>{
 });
 
 const folderUpload=document.getElementById('folder-upload');
-const localPlaylistView=document.getElementById('local-playlist');
+const localPlaylistEl=document.getElementById('local-playlist');
 const localAudioEngine=document.getElementById('local-audio-engine');
 const localPlayBtn=document.getElementById('local-play');
 const localPrevBtn= document.getElementById('local-prev');
@@ -700,7 +700,7 @@ const validAudioExts=['.mp3', '.wav', '.flac', '.ogg', '.m4a'];
 
 folderUpload.addEventListener('change',(e)=>{
     const files=Array.from(e.target.files);
-    localTracks=files.filer(file=>validAudioExts.some(ext=> file.name.toLowerCase().endsWith(ext)));
+    localTracks=files.filter(file=>validAudioExts.some(ext=> file.name.toLowerCase().endsWith(ext)));
     if(localTracks.length>0){
         renderLocalPlayList();
         loadLocalTrack(0);
@@ -726,7 +726,7 @@ function renderLocalPlayList(){
 
 function loadLocalTrack(index){
     currentLocalIndex=index;
-    const file=localTracks[currectLocalIndex];
+    const file=localTracks[currentLocalIndex];
     localAudioEngine.src= URL.createObjectURL(file);
     localTrackTitle.textContent= file.name;
     Array.from(localPlaylistEl.children).forEach((li, i)=>{
@@ -753,7 +753,7 @@ localPlayBtn.addEventListener('click',()=>{
 
 localNextBtn.addEventListener('click',()=>{
     if(localTracks.length=== 0) return;
-    loadLocalTrack((currentLocalIndex+1)% localTrakcs.length);
+    loadLocalTrack((currentLocalIndex+1)% localTracks.length);
     localAudioEngine.play();
     localPlayBtn.textContent='⏸';
 });
@@ -765,7 +765,7 @@ localPrevBtn.addEventListener('click', ()=>{
     localPlayBtn.textContent='⏸';
 });
 
-localAudioEngine.addEventListener('ended',()=> localNextBtn());
+localAudioEngine.addEventListener('ended',()=> localNextBtn.click());
 localAudioEngine.addEventListener('timeupdate',()=>{
     if(localAudioEngine.duration){
         localProgressBar.style.width=`${(localAudioEngine.currentTime/localAudioEngine.duration)*100}%`;

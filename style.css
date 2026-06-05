@@ -516,7 +516,7 @@ body.zen-active .top-bar{
 #local-playlist{list-style:none;}
 #local-playlist li{
     padding: 6px 0;
-    border-bottm:1px solid transparent;
+    border-bottom:1px solid transparent;
     cursor:pointer;
     white-space:nowrap;
     overflow:hidden;
