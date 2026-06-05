@@ -512,3 +512,24 @@ body.zen-active .top-bar{
     background-color:transparent;
     border-color:transparent;
 }
+
+#local-playlist{list-style:none;}
+#local-playlist li{
+    padding: 6px 0;
+    border-bottm:1px solid transparent;
+    cursor:pointer;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    transition:color 0.2s
+}
+
+#local-playlist li:hover{color:var(--text-main);}
+#local-playlist li.active-track{
+    color:#aa3333;
+    font-weight:bold;
+
+}
+
+#local-playlist::-webkit-scrollbar{width:4px;}
+#local-playlist::-webkit-scrollbar-thumb{background:#333; border-radius:2px;}
