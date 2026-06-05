@@ -96,19 +96,40 @@
                     <button id="strict-btn" class="time-toggle" style="font-size:0.85rem; padding:6px 18px;">Strict</button>
                     
                   </div>
-                 <div class="radio-player-container" style="position:relative;">
-                  <div class="radio-info">
-                    
-                        <span class="radio-title">Lofi Radio</span>
-                        <span id="player-status">Paused</span>
-                  </div>
-                  <div style="position:absolute; left:50%; transform:translateX(-50%);">
-                    <canvas id="eq-canvas" width="64" height="16" style="opacity:0.9;"></canvas>
+                 <div class="radio-player-container" style="position:relative; flex-direction: column; align-items: stretch;">
+                    <div style="display:flex; justify-content: space-between; align-items:center; width:100%; margin-bottom:0.5rem;">
+                        <div class="radio-info">
+                            <span id="media-mode-toggle" class="radio-title" style="cursor:pointer; border-bottom:1px dashed var(--text-dim); padding-bottom:2px;" title="Switch Player">Lofi Radio ⟲</span>
+                            <span id="player-status">Paused</span>
+                        </div>
+                        <div style="position:absolute; left:50%"; transform:translateX(-50%);>
+                            <canvas id="eq-canvas" width="64" height="16" style="opacity:0.9;"></canvas>
+                        </div>
+                        <div class="radio-controls" id="lofi-controls">
+                            <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.4">
+                            <button id="music-toggle">▶</button>
 
-                  </div>
-                    <div class="radio-controls">
-                        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.4">
-                        <button id="music-toggle">▶</button>
+                        </div>
+                        <div class="radio-controls" id="local-controls" style="display:none; gap:12px;">
+                            <button id="local-prev" class="time-toggle" style="border:none; padding:4px">⏮</button>
+                            <button id= "local-play" class="time-toggle" style="border:none; font-size:1.1rem; color:var(--text-main); padding:4px;">▶</button>
+                            <button id="local-next" class= "time-toggle" style= "border:none; padding:4px;">⏭</button>
+                        </div>
+                    </div>
+
+                    <div id="local-playlist-view" style="display:none; width:100%; flex-direction:column; border-top:var(--border-line); padding-top:0.8rem; margin-top:0.5rem;">
+                        <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:8px;">
+                            <h4 id= "local-track-title" style="color:var(--text-main); font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:normal; max-width:70%;">No track selected</h4>
+                            <label for="folder-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">Load Folder</label>
+                            <input type="file" id="folder-upload" accept="audio/*" webkitdirectory directory multiple hidden>
+
+                        </div>
+                        <div id="local-progress-container" style="width:100%; height:4px; background:#242427; border-radius:2px; cursor:pointer; margin-bottom:8px;">
+                            <div id="local-progress-bar" style="width:0%; height:100%; background:var(--text-dim); border-radius:2px; pointer-events:none; transition:width 0.1s linear"></div>
+
+                        </div>
+                        <ul id="local-playlist" style="max-height:80px; overflow-y:auto; padding-top:4px; font-size:0.8rem; color:var(--text-dim);"></ul>
+                        <audio id="local-audio-engine" preload="auto"></audio>
                     </div>
                  </div>
                   <audio id="bg-audio" preload="none" crossorigin="anonymous">
