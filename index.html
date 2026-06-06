@@ -121,9 +121,12 @@
                     <div id="local-playlist-view" style="display:none; width:100%; flex-direction:column; border-top:var(--border-line); padding-top:0.8rem; margin-top:0.5rem;">
                         <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:8px;">
                             <h4 id= "local-track-title" style="color:var(--text-main); font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:normal; max-width:70%;">No track selected</h4>
-                            <label for="folder-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">Load Folder</label>
+                            <div>
+                            <label for="folder-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">+ Files</label>
+                            <label for="folder-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">+ Folder</label>
+                            </div>    
+                            <input type="file" id="file-upload" accept="audio/*" multiple hidden>
                             <input type="file" id="folder-upload" accept="audio/*" webkitdirectory directory multiple hidden>
-
                         </div>
                         <div id="local-progress-container" style="width:100%; height:4px; background:#242427; border-radius:2px; cursor:pointer; margin-bottom:8px;">
                             <div id="local-progress-bar" style="width:0%; height:100%; background:var(--text-dim); border-radius:2px; pointer-events:none; transition:width 0.1s linear"></div>
