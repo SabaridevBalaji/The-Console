@@ -686,6 +686,7 @@ mediaToggleBtn.addEventListener('click',()=>{
 });
 
 const folderUpload=document.getElementById('folder-upload');
+const fileUpload=document.getElementById('file-upload');
 const localPlaylistEl=document.getElementById('local-playlist');
 const localAudioEngine=document.getElementById('local-audio-engine');
 const localPlayBtn=document.getElementById('local-play');
@@ -703,15 +704,22 @@ let localTracks=[];
 let currentLocalIndex=0;
 const validAudioExts=['.mp3', '.wav', '.flac', '.ogg', '.m4a'];
 
-folderUpload.addEventListener('change',(e)=>{
+function handleAudioUpload(e){
     const files=Array.from(e.target.files);
-    localTracks=files.filter(file=>validAudioExts.some(ext=> file.name.toLowerCase().endsWith(ext)));
-    if(localTracks.length>0){
+    const newTracks= files.filter(file=> validAudioExts.some(ext=> file.name.toLowerCase().endsWith(ext)));
+    if(newTracks.length>0){
+        localTracks=[...localTracks, ...newTracks];
         renderLocalPlayList();
-        loadLocalTrack(0);
 
+        if(localTracks.length===newTracks.length){
+            loadLocalTracks(0);
+        }
     }
-});
+    e.target.value='';
+    
+}
+folderUpload.addEventListener('change', handleAudioUpload);
+fileUpload.addEventListener('change', handleAudioUpload);
 
 function renderLocalPlayList(){
     localPlaylistEl.innerHTML='';
