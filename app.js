@@ -759,7 +759,7 @@ function loadLocalTrack(index){
         localArtistName.textContent=parts[0].trim();
         localTrackTitle.textContent=parts.slice(1).join("-").trim();
     }else{
-        localTrackTitle.textContent=cleanName;
+        localTrackTitle.textContent=cleanname;
         localArtistName.textContent="Unknown Artist";
     }
     
