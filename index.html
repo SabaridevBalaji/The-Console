@@ -121,9 +121,16 @@
                     <div id="local-playlist-view" style="display:none; width:100%; flex-direction:column; border-top:var(--border-line); padding-top:0.8rem; margin-top:0.5rem;">
                         <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:8px;">
                             <h4 id= "local-track-title" style="color:var(--text-main); font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:normal; max-width:70%;">No track selected</h4>
-                            <div>
-                            <label for="file-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">+ Files</label>
-                            <label for="folder-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">+ Folder</label>
+                            <div style="display:flex; gap:6px; align-items:center;">
+                                <select id="local-sort" class="time-toggle" style="padding:2px 6px; margin:0; font-size:0.7rem; outline:none; background:transparent; appearance:none; cursor:pointer;">
+                                    <option value="default" style="background:var(--panel-bg); color:var(--text-main);">Sort ↕</option>
+                                    <option value="az" style="background:var(--panel-bg); color:var(--text-main);">A-Z</option>
+                                    <option value="za" style="background:var(--panel-bg); color:var(--text-main);">Z-A</option>
+                                    <option value="shuffle" style="background:var(--panel-bg); color:var(--text-main);">Shuffle</option>
+
+                                </select>
+                                <label for="file-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">+ Files</label>
+                                <label for="folder-upload" class="time-toggle" style="padding:2px 8px; cursor:pointer; margin:0; font-size:0.7rem;">+ Folder</label>
                             </div>    
                             <input type="file" id="file-upload" accept="audio/*" multiple hidden>
                             <input type="file" id="folder-upload" accept="audio/*" webkitdirectory directory multiple hidden>
