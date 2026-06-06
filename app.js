@@ -175,6 +175,8 @@ const alarmAudio=document.getElementById('alarm-audio');
 const musicToggle=document.getElementById('music-toggle');
 const playerStatus=document.getElementById('player-status');
 const volumeSlider=document.getElementById('volume-slider');
+const localSortSelect=document.getElementById('local-sort');
+
 bgAudio.volume=volumeSlider.value;
 alarmAudio.volume=0.8;
 volumeSlider.addEventListener('input', (e)=>{
@@ -705,18 +707,22 @@ let currentLocalIndex=0;
 const validAudioExts=['.mp3', '.wav', '.flac', '.ogg', '.m4a'];
 
 function handleAudioUpload(e){
-    const files=Array.from(e.target.files);
-    const newTracks= files.filter(file=> validAudioExts.some(ext=> file.name.toLowerCase().endsWith(ext)));
+    const files= Array.from(e.target.files);
+    const newTracks=files.filter(file=> validAudioExts.some(ext=> file.name.toLowerCase().endsWith(ext)));
     if(newTracks.length>0){
         localTracks=[...localTracks, ...newTracks];
-        renderLocalPlayList();
+        if(localSortSelect.value !=='default'){
+            localSortSelect.dispatchEvent(new Event('change'));
 
+        }else{
+            renderLocalPlayList();
+
+        }
         if(localTracks.length===newTracks.length){
             loadLocalTrack(0);
         }
     }
     e.target.value='';
-    
 }
 folderUpload.addEventListener('change', handleAudioUpload);
 fileUpload.addEventListener('change', handleAudioUpload);
@@ -788,4 +794,29 @@ localAudioEngine.addEventListener('timeupdate',()=>{
 localProgressContainer.addEventListener('click',(e)=>{
     if(localTracks.length===0)return;
     localAudioEngine.currentTime=(e.offsetX/localProgressContainer.clientWidth)* localAudioEngine.duration;
+});
+
+localSortSelect.addEventListener('change',(e)=>{
+    if(localTracks.length===0)return;
+    const currentFile=localTracks[currentLocalIndex];
+    const sortType= e.target.value;
+    if(sortType==='az'){
+        localTracks.sort((a,b)=>a.name.localeCompare(b.name));
+
+    }else if(sortType==='za'){
+        localTracks.sort((a,b)=> b.name.localeCompare(a.name));
+
+    }else if(sortType==='shuffle'){
+        for(let i = localTracks.length-1; i>0; i--){
+            const j=Math.floor(Math.random()*(i+1));
+            [localTracks[i], localTrakcs[j]]= [localTracks[j], localTracks[i]];
+        }
+    }
+    if(currentFile){
+        currentLocalIndex=localTracks.indexOf(currentFile);
+    }
+    renderLocalPlayList();
+    Array.from(localPlaylistEl.children).forEach((li,i)=>{
+        li.classList.toggle('active-track',i===currentLocalIndex);
+    });
 });
