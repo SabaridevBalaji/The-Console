@@ -712,7 +712,7 @@ function handleAudioUpload(e){
         renderLocalPlayList();
 
         if(localTracks.length===newTracks.length){
-            loadLocalTracks(0);
+            loadLocalTrack(0);
         }
     }
     e.target.value='';
