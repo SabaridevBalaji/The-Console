@@ -694,6 +694,11 @@ const localNextBtn= document.getElementById('local-next');
 const localTrackTitle=document.getElementById('local-track-title');
 const localProgressBar=document.getElementById('local-progress-bar');
 const localProgressContainer= document.getElementById('local-progress-container');
+const localVolumeSlider=document.getElementById('local-volume-slider');
+localAudioEngine.volume=localVolumeSlider.value;
+localVolumeSlider.addEventListener('input',(e)=>{
+    localAudioEngine.volume=e.target.value;
+});
 let localTracks=[];
 let currentLocalIndex=0;
 const validAudioExts=['.mp3', '.wav', '.flac', '.ogg', '.m4a'];
