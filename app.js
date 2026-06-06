@@ -695,6 +695,7 @@ const localPlayBtn=document.getElementById('local-play');
 const localPrevBtn= document.getElementById('local-prev');
 const localNextBtn= document.getElementById('local-next');
 const localTrackTitle=document.getElementById('local-track-title');
+const localArtistName=document.getElementById('local-artist-name');
 const localProgressBar=document.getElementById('local-progress-bar');
 const localProgressContainer= document.getElementById('local-progress-container');
 const localVolumeSlider=document.getElementById('local-volume-slider');
@@ -747,7 +748,21 @@ function loadLocalTrack(index){
     currentLocalIndex=index;
     const file=localTracks[currentLocalIndex];
     localAudioEngine.src= URL.createObjectURL(file);
-    localTrackTitle.textContent= file.name;
+    const cleanname=file.name.replace(/\.[^/.]+$/,"");
+    if(cleanname.includes(" - ")){
+        const parts=cleanname.split(" - ");
+        localArtistName.textContent=parts[0].trim();
+        localTrackTitle.textContent= parts[1].trim();
+
+    }else if(cleanname.includes("-")){
+        const parts= cleanname.split("-");
+        localArtistName.textContent=parts[0].trim();
+        localTrackTitle.textContent=parts.slice(1).join("-").trim();
+    }else{
+        localTrackTitle.textContent=cleanName;
+        localArtistName.textContent="Unknown Artist";
+    }
+    
     Array.from(localPlaylistEl.children).forEach((li, i)=>{
         li.classList.toggle('active-track', i=== currentLocalIndex);
 
