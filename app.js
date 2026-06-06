@@ -809,7 +809,7 @@ localSortSelect.addEventListener('change',(e)=>{
     }else if(sortType==='shuffle'){
         for(let i = localTracks.length-1; i>0; i--){
             const j=Math.floor(Math.random()*(i+1));
-            [localTracks[i], localTrakcs[j]]= [localTracks[j], localTracks[i]];
+            [localTracks[i], localTracks[j]]= [localTracks[j], localTracks[i]];
         }
     }
     if(currentFile){
