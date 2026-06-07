@@ -52,25 +52,32 @@
 
                 </label>
                 <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
-                    <input type="checkbox" id="setting-auto-pause" style="width:auto; margin:0; padding:0;">
+                    <input type="checkbox" id="setting-auto-play" style="width:auto; margin:0; padding:0;">
                     <span style="color:var(--text-main); font-size:0.95rem;">Auto-pause when Flow pauses</span>
-                </label>
-                <div style="margin-top:0.5rem; border-top:var(--border-line); padding-top:1.2rem;">
-                    <h3 style="color:var(--text-dim); font-size:0.85rem; margin-bottom:0.8rem;">Themes</h3>
-                    <div id="theme-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                        <button class="theme-select-btn time-toggle" data-theme="default">Console Dark</button>
-                        <button class="theme-select-btn time-toggle" data-theme="vanilla">Vanilla Light</button>
-                        <button class="theme-select-btn time-toggle" data-theme="gruvbox">Gruvbox</button>
-                        <button class="theme-select-btn time-toggle" data-themes="nord">Nord Frost</button>
-                        <button class="theme-select-btn time-toggle" data-themes="midnight">Midnight</button>
-                        <button class="theme-select-btn time-toggle" data-themes="matcha">Matcha Green</button>
-                        
 
-                    </div>
-                </div>
+                </label>
             </div>
         </div>
     </div>
+    <div id="themes-modal" class="modal-hidden">
+        <div class="modal-content panel">
+            <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:1.5rem;">
+                <h2 style="color:var(--text-main);">Theme Engine</h2>
+                <button id="close-themes" class="time-toggle" style="padding:4px 10px;">✖</button>
+
+            </div>
+            <div id="theme-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px">
+                <button class="theme-select-btn time-toggle" data-themes="default">Console Dark</button>
+                <button class="theme-select-btn time-toggle" data-themes="vanilla">Vanilla Light</button>
+                <button class="theme-select-btn time-toggle" data-themes="gruvbox">Gruvbox</button>
+                <button class="theme-select-btn time-toggle" data-themes="nord">Nord Frost</button>
+                <button class="theme-select-btn time-toggle" data-themes="midnight">Midnight</button>
+                <button class="theme-select-btn time-toggle" data-themes="matcha">Matcha Green</button>
+
+            </div>
+        </div>
+
+    </div> 
     <main class="dashboard-wrapper">
         <header class="top-bar panel">
             <div style="display:flex; align-items:center; gap:16px;">
@@ -81,6 +88,8 @@
                 <button id="zen-btn" class="time-toggle">ZEN</button>
                 <button id ="crt-btn" class="time-toggle">CRT</button>
                 <button id="help-btn" class="time-toggle">DOCS</button>
+                <button id="thems-open-btn" class="time-toggle">THEMES</button>
+
             </div>
             <div class="clock-area zen-hide" style="display:flex; flex-direction:column; align-items:flex-end;">
                 <h1 id="clock-text" style="font-size:3.5rem; font-weight:800; letter-spacing:-2px; line-height:1; margin:0;">00:00</h1>
