@@ -1,20 +1,34 @@
-body.vanilla-theme{
-    --bg-color:#FDFBF7;
-    --panel-bg:#F5F2EA;
-    --text-main:#2C2C2E;
-    --text-dim:#8B8884;
-   
-}
-body, .panel{transition:background-color 0.3s, color 0.3s;}
 :root{
-    --bg-color: #0a0a0c;
-    --panel-bg: #141417  ;
-    --text-main: #EDEDF0 ;
+    --bg-color:#0a0a0c;
+    --panel-bg:#141417;
+    --text-main: #EDEDF0;
     --text-dim: #8A8A93;
     --border-line: 1px solid #e1e1e10d;
-    font-family: sans-serif;
-}
+    font-family:sans-serif;
 
+}
+body, .panel{
+    transition:background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+}
+body[data-theme="vanilla"]{
+    --bg-color: #FDFBF7; --panel-bg: #F5F2EA; --text-main: #2C2C2E; --text-dim:#8B8864;
+
+}
+body[data-theme="gruvbox"]{
+    --bg-color: #282828; --panel-bg: #3c3836; --text-main:#ebdbb2; --text-dim: #a89984;
+
+}
+body[data-theme="nord"]{
+    --bg-color:#2e3440; --panel-bg:#3b4252; --text-main: #eceff4; --text-dim: #d8dee9;
+}
+body[data-theme="midnight"]{
+    --bg-color:#0f141e; --panel-bg: #1a2130; --text-main:#e2e8f0;
+
+}
+body[data-theme="matcha"]{
+    --bg-color:#e8f0e4; --panel-bg:#dbe6d5; --text-main: #2c3b2e;
+}
 
 *{
     box-sizing: border-box;
