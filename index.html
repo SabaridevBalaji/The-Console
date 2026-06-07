@@ -29,7 +29,9 @@
                     <li><code>zen</code><span style="color:var(--text-dim); font-size:0.85rem; float:right;">Toggle focus mode</span></li>
                     <li><code>strict</code><span style="color:var(--text-dim); font-size:0.85rem; float:right;">Toggle strict mode in timer</span></li>
                     <li><code>clear scratchpad</code> <span style="color:var(--text-dim); font-size:0.85rem; float:right;">clear the notes</span></li>
-
+                    <li><code>todo [task]</code><span style="color:var(--text-dim); font-size:0.85rem; float:right;">Add a task to Focus list</span></li>
+                    <li><code>note [text]</code><span style="color:var(--text-dim); font-size:0.85rem; float:right;">Append text to scratchpad</span></li>
+                    <li><code>local [play/next/prev]</code><span style="color:var(--text-dim); font-size:0.85rem; float:right;">Control local players</span></li>
                 </ul>
             </div>
         </div>
@@ -98,7 +100,7 @@
                   </div>
                  <div class="radio-player-container" style="position:relative; flex-direction: column; align-items: stretch;">
                     <div style="display:flex; justify-content: space-between; align-items:center; width:100%; margin-bottom:0.5rem;">
-                        <div class="radio-info">
+                        <div class="radio-info" style="min-width:120px; flex-shrink:0;">
                             <span id="media-mode-toggle" class="radio-title" style="cursor:pointer; border-bottom:1px dashed var(--text-dim); padding-bottom:2px;" title="Switch Player">Lofi Radio ⟲</span>
                             <span id="player-status">Paused</span>
                         </div>
@@ -113,16 +115,16 @@
                         <div class="radio-controls" id="local-controls" style="display:none; gap:12px;">
                             <input type="range" id="local-volume-slider" class="mix-slider" min="0" max="1" step="0.05" value="0.4" style="width:60px;">
                             <button id="local-prev" class="time-toggle" style="border:none; padding:4px">⏮</button>
-                            <button id= "local-play" class="time-toggle" style="border:none; font-size:1.1rem; color:var(--text-main); padding:4px;">▶</button>
+                            <button id= "local-play" class="time-toggle" style="border:none; font-size:1.1rem; color:var(--text-main); padding:4px; width:36px; text-align:center; flex-shrink:0;">▶</button>
                             <button id="local-next" class= "time-toggle" style= "border:none; padding:4px;">⏭</button>
                         </div>
                     </div>
 
                     <div id="local-playlist-view" style="display:none; width:100%; flex-direction:column; border-top:var(--border-line); padding-top:0.8rem; margin-top:0.5rem;">
-                        <div style="display:flex; justify-content: space-between; align-items:flex-start; margin-bottom:12px;">
-                            <div>
-                            <h4 id= "local-track-title" style="color:var(--text-main); font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:normal; max-width:70%;">No track selected</h4>
-                            <div id="local-artist-name" style="color:var(--text-dim); font-size:0.75rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;">Unknown Artist</div>
+                        <div style="display:flex; justify-content: space-between; align-items:flex-start; margin-bottom:12px; width:100%;">
+                            <div style="display:flex; flex-direction:column; flex:1; min-width:0; padding-right:12px;">  
+                                <h4 id="local-track-title" style="color:var(--text-main); font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:normal; margin:0;">No track selected</h4>
+                                <div id="local-artist-name" style="color:var(--text-dim); font-size:0.75rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;">Unknown Artist</div>
                             </div>
                             <div style="display:flex; gap:6px; align-items:center;">
                                 <select id="local-sort" class="time-toggle" style="padding:2px 6px; margin:0; font-size:0.7rem; outline:none; background:transparent; appearance:none; cursor:pointer;">
