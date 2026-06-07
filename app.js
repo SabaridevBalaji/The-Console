@@ -86,18 +86,21 @@ textarea.addEventListener('input',()=> {
 });
 
 const themeBtn=document.getElementById('theme-btn');
-const themeList=['default', 'vanilla', 'gruvbox','nord','midnight','matcha'];
 let currentTheme=localStorage.getItem('theme')||'default';
-document.body.setAttribute('data-theme', currentTheme);
+document.body.setAttribute('data-theme',currentTheme);
 themeBtn.addEventListener('click',()=>{
-    let currentIndex=themeList.indexOf(currentTheme);
-    currentTheme=themeList[(currentIndex+1)% themeList.length];
+    if(currentTheme ==='vanilla'){
+        currentTheme='default';
+    }else{
+        currentTheme='vanilla';
+
+    }
     document.body.setAttribute('data-theme', currentTheme);
     localStorage.setItem('theme', currentTheme);
 });
 document.querySelectorAll('.theme-select-btn').forEach(btn=>{
     btn.addEventListener('click',(e)=>{
-        currentTheme=e.target.getAttribute('data-theme');
+        currentTheme= e.target.getAttribute('data-theme');
         document.body.setAttribute('data-theme', currentTheme);
         localStorage.setItem('theme', currentTheme);
     });
@@ -690,6 +693,16 @@ closeSettings.addEventListener('click',()=> settingsModal.classList.remove('moda
 settingsModal.addEventListener('click',(e)=>{
     if(e.target===  settingsModal){
         settingsModal.classList.remove('modal-visible');
+    }
+});
+const themesModal=document.getElementById('themes-modal');
+const themesOpenBtn=document.getElementById('themes-open-btn');
+const closeThemes=document.getElementById('close-themes');
+themesOpenBtn.addEventListener('click',()=> themesModal.classList.add('modal-visible'));
+closeThemes.addEventListener('click',()=>themesModal.classList.remove('modal-visible'));
+themesModal.addEventListener('click',(e)=>{
+    if(e.target=== themesModal){
+        themesModal.classList.remove('modal-visible');
     }
 });
 
