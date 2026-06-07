@@ -588,7 +588,48 @@ cliInput.addEventListener('keypress',(e)=>{
                 strictBtn.click();
                 cliInput.value=`> Strict Mode toggled`;
                 break;
-            
+            case 'todo':
+                const taskText= args.slice(1).join(' ').trim();
+                if(taskText){
+                    savedTasks.push('> '+ taskText);
+                    localStorage.setItem('focus_tasks', JSON.stringify(savedTasks));
+                    renderTasks();
+                    cliInput.value='> Task added to Focus list';
+                } else{
+                    cliInput.value= '> Error: Provide a task (e.g., todo Read chapter 4)';
+                }
+                break;
+            case 'note':
+                const noteText= args.slice(1).join(' ').trim();
+                if(noteText){
+                    const textareaEl= document.getElementById('notes-area');
+                    textareaEl.value +=(textareaEl.value ? '\n' :'')+'- '+ noteText;
+                    textareaEl.dispatchEvent(new Event('input'));
+                    cliInput.value='> Note appended to Scratchpad';
+                }else{
+                    cliInput.value='> Error: Provide a note (e.g., note Remember to email Elbin)';
+
+                }
+                break;
+            case 'local':
+                if(localTracks.length===0){
+                    cliInput.value='> Error: No local tracks loaded';
+                    break;
+                }        
+                if(value==='play'|| value==='pause'){
+                    localPlayBtn.click();
+                    cliInput.value= `Local player ${localAudioEngine.paused ? 'paused' : 'playing'}`;
+                }else if(value==='next'){
+                    localNextBtn.click();
+                    cliInput.value='> Skipping to next track';
+
+                }else if(value==='prev'){
+                    localPrevBtn.click();
+                    cliInput.value='> Going to previous track';
+                }else{
+                    cliInput.value='> Error: Valid args are [play, pause, next, prev]';
+                }
+                break;
             case 'help':
                     docsModal.classList.add('modal-visible');
                     cliInput.value='> System documentation opened.';
