@@ -574,6 +574,7 @@ cliInput.addEventListener('keypress',(e)=>{
                 }else{
                     cliInput.value='> Error: Valid themes are crt, default, vanilla, gruvbox, nord, midnight, matcha'
                 }
+                break;
             case'clear':
                 if(value==='scratchpad'){
                     const textarea=document.getElementById('notes-area');
