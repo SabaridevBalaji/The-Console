@@ -85,20 +85,24 @@ textarea.addEventListener('input',()=> {
     localStorage.setItem('my_notes',textarea.value);
 });
 
-const themeBtn =  document.getElementById('theme-btn');
-if(localStorage.getItem('theme')==='vanilla'){
-
-    document.body.classList.add('vanilla-theme');
-}
-themeBtn.addEventListener('click', ()=>{
-    document.body.classList.toggle('vanilla-theme');
-    if(document.body.classList.contains('vanilla-theme')){
-        localStorage.setItem('theme', 'vanilla');
-    } 
-    else{
-        localStorage.setItem('theme','dark');
-    }
+const themeBtn=document.getElementById('theme-btn');
+const themeList=['default', 'vanilla', 'gruvbox','nord','midnight','matcha'];
+let currentTheme=localStorage.getItem('theme')||'default';
+document.body.setAttribute('data-theme', currentTheme);
+themeBtn.addEventListener('click',()=>{
+    let currentIndex=themeList.indexOf(currentTheme);
+    currentTheme=themeList[(currentIndex+1)% themeList.length];
+    document.body.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
 });
+document.querySelectorAll('.theme-select-btn').forEach(btn=>{
+    btn.addEventListener('click',(e)=>{
+        currentTheme=e.target.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme', currentTheme);
+    });
+});
+
 
 async function fetchWeatherData(lat,lon,cityName) {
     const tempText=document.getElementById('w-temp');
@@ -553,26 +557,20 @@ cliInput.addEventListener('keypress',(e)=>{
                 break;
             
             case'theme':
+                const validThemes=['default', 'vanilla','gruvbox','nord','midnight','matcha'];
                 if(value==='crt'){
                     crtBtn.click();
                     cliInput.value='> CRT filter toggled';
 
-                }else if (value==='light'){
-                    if(!document.body.classList.contains('vanilla-theme')){
-                        themeBtn.click();
-                    }
-                    cliInput.value='> Light theme activated';
+                }else if(validThemes.includes(value)){
+                    currentTheme=value;
+                    document.body.setAttribute('data-theme', value);
+                    localStorage.setItem('theme', value);
+                    cliInput.value=`> Theme changed to ${value}`;
 
-                }else if (value==='dark'){
-                    if(document.body.classList.contains('vanilla-theme')){
-                        themeBtn.click();
-                    }
-                    cliInput.value='> Dark theme activatedd';
-                } else{
-                    cliInput.value='> Error: Valid Themes are [crt, light, dark]';
-
+                }else{
+                    cliInput.value='> Error: Valid themes are crt, default, vanilla, gruvbox, nord, midnight, matcha'
                 }
-                break;
             case'clear':
                 if(value==='scratchpad'){
                     const textarea=document.getElementById('notes-area');
