@@ -932,10 +932,16 @@ localAudioEngine.addEventListener('play',initLocalAudioContent);
 
 const wallpaperUpload=document.getElementById('wallpaper-upload');
 const clearWallpaper=document.getElementById('clear-wallpaper');
-const savedWallpaper=localStorage.getItem('console_wallpaper');
-if(savedWallpaper){
-    document.body.style.backgroundImage=`url(${savedWallpaper})`;
-    document.body.classList.add('has-wallpaper');
+
+try{
+    const savedWallpaper=localStorage.getItem('console_wallpaper');
+    if(savedWallpaper){
+        document.body.style.backgroundImage=`url("${savedWallpaper}")`;
+        document.body.classList.add('has-wallpaper');
+
+    }
+}catch(err){
+    console.error("Could not load saved wallaper");
 
 }
 wallpaperUpload.addEventListener('change',(e)=>{
@@ -943,41 +949,42 @@ wallpaperUpload.addEventListener('change',(e)=>{
     if(!file)return;
     const reader=new FileReader();
     reader.onload=(event)=>{
+        const rawDataUrl=event.target.result;
+        document.body.style.backgroundImage=`url("${rawDataUrl}")`;
+        document.body.classList.add('has-wallpaper');
+
         const img=new Image();
         img.onload=()=>{
-            const canvas=document.createElement('canvas');
-            const ctx= canvas.getContext('2d');
-            const MAX_WIDTH= 1920;
-            let width=img.width;
-            let height=img.height;
-            if(width>MAX_WIDTH){
-                height*= MAX_WIDTH/width;
-                width=MAX_WIDTH;
-
-            }
-            canvas.width=width;
-            canvas.height=height;
-            ctx.drawImage(img,0,0,width,height);
-            const dataUrl=canvas.toDataURL('image/jpeg',0.6);
-            document.body.style.backgroundImage=`url(${dataUrl})`;
-            document.body.style.classList.add('has-wallpaper');
             try{
-                localStorage.setItem('console_wallpaper',dataUrl);
-
+                const canvas=document.createElement('canvas');
+                const ctx=canvas.getContext('2d');
+                const MAX_WIDTH=1920;
+                let width= img.width;
+                let height=img.height;
+                if(width>MAX_WIDTH){
+                    height *=MAX_WIDTH/width;
+                    width=MAX_WIDTH;
+                }
+                canvas.width=width;
+                canvas.height=height;
+                ctx.drawImage(img, 0,0,width,height);
+                const compressedUrl=canvas.toDataURL('image/jpeg',0.6);
+                localStorage.setItem('console_wallpaper', compressedUrl);
+                console.log("Wallpaper saved to memoryu");
             }catch(err){
-                console.error("Image too large to save to memory, but applied for curent session");
+                console.error("save failed, but wallaper is applied forr this session");
 
             }
-
         };
-        img.src=event.target.result;
+        img.src=rawDataUrl;
 
     };
-    reader,readAsDataUrl(file);
+    reader.readAsDataURL(file);
 });
 
 clearWallpaper.addEventListener('click',()=>{
     document.body.style.backgroundImage='';
     document.body.classList.remove('has-wallpaper');
     localStorage.removeItem('console_wallpaper');
+
 });
