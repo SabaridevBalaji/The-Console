@@ -888,3 +888,44 @@ localSortSelect.addEventListener('change',(e)=>{
         li.classList.toggle('active-track',i===currentLocalIndex);
     });
 });
+
+const localEqCanvas= document.getElementById('local-eq-canvas');
+const localCanvasCtx=localEqCanvas.getContext('2d');
+let localAudioCtx, localAnalyser, localSource,localDataArray,localBufferLength;
+let isLocalAudioInitialized=false;
+function initLocalAudioContent(){
+    if(isLocalAudioInitialized) return;
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    localAudioCtx=new AudioContext();
+    localAnalyser=localAudioCtx.createAnalyser();
+    localAnalyser.fftSize=128;
+    localBufferLength= localAnalyser.frequencyBinCount;
+    localDataArray=new Uint8Array(localBufferLength);
+    localSource=localAudioCtx.createMediaElementSource(localAudioEngine);
+    localSource.connect(localAnalyser);
+    localAnalyser.connect(localAudioCtx.destination);
+    isLocalAudioInitialized=true;
+    drawLocalEQ();
+
+}
+function drawLocalEQ(){
+    requestAnimationFrame(drawLocalEQ);
+    localCanvasCtx.clearRect(0,0, localEqCanvas.width, localEqCanvas.height);
+
+    if(localAudioEngine.paused){
+        localCanvasCtx.fillStyle='#8A8A93';
+        localCanvasCtx.fillRect(0, localEqCanvas.height/2, localEqCanvas.width,1);
+        return;
+    }
+
+    localAnalyser.getByteFrequencyData(localDataArray);
+    const barWidth=(localEqCanvas.width/(localBufferLength/2.5));
+    let x=0;
+    for(let i=0; i<localBufferLength/2.5; i++){
+        let barHeight=(localDataArray[i]/255)*localEqCanvas.height;
+        localCanvasCtx.fillStyle=barHeight> (localEqCanvas.height*0.7)?'#aa3333':'#EDEDf0';
+        localCanvasCtx.fillRect(x,localEqCanvas.height-barHeight,barWidth-1, barHeight);
+        x+=barWidth;
+    }
+}
+localAudioEngine.addEventListener('play',initLocalAudioContent);
