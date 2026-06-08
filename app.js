@@ -929,3 +929,55 @@ function drawLocalEQ(){
     }
 }
 localAudioEngine.addEventListener('play',initLocalAudioContent);
+
+const wallpaperUpload=document.getElementById('wallpaper-upload');
+const clearWallpaper=document.getElementById('clear-wallpaper');
+const savedWallpaper=localStorage.getItem('console_wallpaper');
+if(savedWallpaper){
+    document.body.style.backgroundImage=`url(${savedWallpaper})`;
+    document.body.classList.add('has-wallpaper');
+
+}
+wallpaperUpload.addEventListener('change',(e)=>{
+    const file=e.target.files[0];
+    if(!file)return;
+    const reader=new FileReader();
+    reader.onload=(event)=>{
+        const img=new Image();
+        img.onload=()=>{
+            const canvas=document.createElement('canvas');
+            const ctx= canvas.getContext('2d');
+            const MAX_WIDTH= 1920;
+            let width=img.width;
+            let height=img.height;
+            if(width>MAX_WIDTH){
+                height*= MAX_WIDTH/width;
+                width=MAX_WIDTH;
+
+            }
+            canvas.width=width;
+            canvas.height=height;
+            ctx.drawImage(img,0,0,width,height);
+            const dataUrl=canvas.toDataURL('image/jpeg',0.6);
+            document.body.style.backgroundImage=`url(${dataUrl})`;
+            document.body.style.classList.add('has-wallpaper');
+            try{
+                localStorage.setItem('console_wallpaper',dataUrl);
+
+            }catch(err){
+                console.error("Image too large to save to memory, but applied for curent session");
+
+            }
+
+        };
+        img.src=event.target.result;
+
+    };
+    reader,readAsDataUrl(file);
+});
+
+clearWallpaper.addEventListener('click',()=>{
+    document.body.style.backgroundImage='';
+    document.body.classList.remove('has-wallpaper');
+    localStorage.removeItem('console_wallpaper');
+});
