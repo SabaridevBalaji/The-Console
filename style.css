@@ -423,8 +423,9 @@ body.strict-violation{
     top:0;
     left:0;
     width:100%;
-    background-color:#0a0a0c;
-    border-bottom:1px solid #333;
+    background-color:var(--panel-bg);
+
+    border-bottom:var(--boder-line);
     padding:12px 2rem;
     display:flex;
     align-items:center;
