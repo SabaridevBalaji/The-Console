@@ -282,7 +282,8 @@ function drawEQ(){
     requestAnimationFrame(drawEQ);
     if(bgAudio.paused){
         canvasCtx.clearRect(0,0,eqCanvas.width, eqCanvas.height);
-        canvasCtx.fillStyle='#8A8A93';
+        canvasCtx.fillStyle=themeColors.dim;
+
         for(let i= 1; i<16;i++){
             canvasCtx.fillRect(i*4, eqCanvas.height - 2,2,2);
         }
@@ -296,11 +297,7 @@ function drawEQ(){
         let barHeight=(dataArray[i]/255)* eqCanvas.height;
         let x= i*4;
         
-        if(barHeight> eqCanvas.height*0.7){
-            canvasCtx.fillStyle='#aa3333';
-        }else{
-            canvasCtx.fillStyle='#EDEDf0';
-        }
+        canvasCtx.fillStyle=barHeight>eqCanvas.height*0.7?themeColors.accent:themeColors.main;
         let finalHeight=Math.max(barHeight, 2);
         canvasCtx.fillRect(x, eqCanvas.height -finalHeight, 2,finalHeight);
     }
