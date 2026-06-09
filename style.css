@@ -621,3 +621,24 @@ body.has-wallpaper ::placeholder{
     color:var(--text-main)!important;
     opacity:0.8 !important;
 }
+
+body.zen-active .panel.top-bar,
+body.zen-active .main-grid .panel:not(.zen-hide){
+    background:transparent !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter: none !important;
+    border:none !important;
+    box-shadow:none !important;
+
+}
+body.zen-active .main-grid .panel:not(.zen-hide){
+    z-index:9999 !important;
+
+}
+body.zen-active .top-bar{
+    pointer-events:none;
+
+}
+body.zen-active .top-bar *{
+    pointer-events:auto;
+}
