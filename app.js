@@ -689,7 +689,7 @@ let isVibrancyActive=localStorage.getItem('vibrancy_active')==='true';
 
 autoPlayCheck.checked=autoPlayRadio;
 autoPauseCheck.checked=autoPauseRadio;
-vibrancyCheckCheck.checked=isVibrancyActive;
+vibrancyCheck.checked=isVibrancyActive;
 if(isVibrancyActive)document.body.classList.add('vibrancy-active');
 vibrancyCheck.addEventListener('change',(e)=>{
     isVibrancyActive=e.target.checked;
