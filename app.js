@@ -931,7 +931,7 @@ function drawLocalEQ(){
     let x=0;
     for(let i=0; i<localBufferLength/2.5; i++){
         let barHeight=(localDataArray[i]/255)*localEqCanvas.height;
-        localCanvasCtx.fillStyle=barHeight>(localEqCanvas.height*0.7)?themeColors.accent:themeColors:main;
+        localCanvasCtx.fillStyle=barHeight>(localEqCanvas.height*0.7)?themeColors.accent:themeColors.main;
         localCanvasCtx.fillRect(x,localEqCanvas.height-barHeight,barWidth-1, barHeight);
         x+=barWidth;
     }
