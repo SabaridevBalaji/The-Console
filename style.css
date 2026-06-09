@@ -557,10 +557,40 @@ body{
     background-repeat:no-repeat;
 
 }
-body.has-wallpaper .panel{
-    background-color:color-mix(in srgb,var(--panel-bg) 85%, transparent)!important;
+body{
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+
+}
+
+body.has-wallpaper .panel,
+body.has-wallpaper #cli-container{
+    background-color:color-mix(in srgb,var(--panel-bg)85%,transparent)!important;
     backdrop-filter:blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    -webkit-backdrop-filter:blur(12px);
     border:1px solid rgba(225,225,225,0.05);
-    
+
+}
+body.has-wallpaper .modal-content{
+    background-color:color-mix(in srgb,var(--panel-bg)85%, transparent) !important;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+}
+body.has-wallpaper.vibrancy-active .panel,
+body.has-wallpaper.vibrancy-active #cli-container{
+    background-color:color-mix(in srgb,var(--panel-bg)55%,transparent)!important;
+    backdrop-filter:blur(24px)saturate(180%);
+    border:1px solid rgba(225,225,225,0.08);
+    box-shadow:0 8px 32px rgba(0,0,0,0.15),inset 0 1px 0 rgba(225,225,225,0.01);
+
+}
+body.has-wallpaper.vibrancy-active .modal-content{
+    background-color:color-mix(in srgb,var(--panel-bg)65%,transparent)!important;
+    backdrop-filter:blur(30px)saturate(200%);
+    -webkit-backdrop-filter:blur(30px)saturate(200%);
+    border:1px solid rgba(225,225,225,0.12);
+    box-shadow:0 12px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(225,225,225,0.15);
 }
