@@ -921,7 +921,7 @@ function drawLocalEQ(){
     localCanvasCtx.clearRect(0,0, localEqCanvas.width, localEqCanvas.height);
 
     if(localAudioEngine.paused){
-        localCanvasCtx.fillStyle='#8A8A93';
+        localCanvasCtx.fillStyle= themeColors.dim;
         localCanvasCtx.fillRect(0, localEqCanvas.height/2, localEqCanvas.width,1);
         return;
     }
@@ -931,7 +931,7 @@ function drawLocalEQ(){
     let x=0;
     for(let i=0; i<localBufferLength/2.5; i++){
         let barHeight=(localDataArray[i]/255)*localEqCanvas.height;
-        localCanvasCtx.fillStyle=barHeight> (localEqCanvas.height*0.7)?'#aa3333':'#EDEDf0';
+        localCanvasCtx.fillStyle=barHeight>(localEqCanvas.height*0.7)?themeColors.accent:themeColors:main;
         localCanvasCtx.fillRect(x,localEqCanvas.height-barHeight,barWidth-1, barHeight);
         x+=barWidth;
     }
