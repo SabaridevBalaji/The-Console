@@ -681,11 +681,27 @@ const settingsBtn=document.getElementById('settings-btn');
 const closeSettings= document.getElementById('close-settings');
 const autoPlayCheck= document.getElementById('setting-auto-play');
 const autoPauseCheck=document.getElementById('setting-auto-pause');
+const vibrancyCheck=document.getElementById('setting-vibrancy');
 let autoPlayRadio= localStorage.getItem('auto_play_radio')==='true';
 let autoPauseRadio= localStorage.getItem('auto_pause_radio')==='true';
+let isVibrancyActive=localStorage.getItem('vibrancy_active')==='true';
+
 
 autoPlayCheck.checked=autoPlayRadio;
 autoPauseCheck.checked=autoPauseRadio;
+vibrancyCheckCheck.checked=isVibrancyActive;
+if(isVibrancyActive)document.body.classList.add('vibrancy-active');
+vibrancyCheck.addEventListener('change',(e)=>{
+    isVibrancyActive=e.target.checked;
+    localStorage.setItem('vibrancy_active',isVibrancyActive);
+    if(isVibrancyActive){
+        document.body.classList.add('vibrancy-active');
+
+    }else{
+        document.body.classList.remove('vibrancy-active');
+    }
+});
+
 autoPlayCheck.addEventListener('change',(e)=>{
     autoPlayRadio=e.target.checked;
     localStorage.setItem('auto_play_radio', autoPlayRadio);
