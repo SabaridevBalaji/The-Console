@@ -4,6 +4,7 @@
     --text-main: #EDEDF0;
     --text-dim: #8A8A93;
     --border-line: 1px solid #e1e1e10d;
+    --accent-color:#aa3333;
     font-family:sans-serif;
 
 }
@@ -165,7 +166,7 @@ textarea{
 .sec-hand{
     width:2px;
     height:48%;
-    background-color: #aa3333;
+    background-color: var(--accent-color);
 }
 
 .center-dot{
@@ -174,7 +175,7 @@ textarea{
     left:50%;
     width:10px;
     height:10px;
-    background:#aa3333;
+    background:var(--accent-color);
     border-radius:50%;
     transform:translate(-50%,-50%);
 }
@@ -438,7 +439,7 @@ body.strict-violation{
 
 }
 .cli-prompt{
-    color:#aa3333;
+    color:var(--accent-color);
     font-weight:bold;
     font-size:1.1rem;
 
@@ -447,7 +448,7 @@ body.strict-violation{
     flex:1;
     background:transparent;
     border:none;
-    color:#EDEDf0;
+    color:var(--text-main);
     font-size:1.1rem;
     outline:none;
     margin:0;
@@ -540,7 +541,7 @@ body.zen-active .top-bar{
 
 #local-playlist li:hover{color:var(--text-main);}
 #local-playlist li.active-track{
-    color:#aa3333;
+    color:var(--accent-color);
     font-weight:bold;
 
 }
