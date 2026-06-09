@@ -566,7 +566,21 @@ cliInput.addEventListener('keypress',(e)=>{
                 zenBtn.click();
                 cliInput.value='> Zen mode toggled';
                 break;
-            
+                
+            case 'glass':
+                isVibrancyActive=!isVibrancyActive;
+                const vib=document.getElementById('setting-vibrancy');
+                if(vib)vib.checked=isVibrancyActive;
+                localStorage.setItem('vibrancy_active',isVibrancyActive);
+                if(isVibrancyActive){
+                    document.body.classList.add('vibrancy-active');
+                    cliInput.value='> Glass engine activated';
+
+                }else{
+                    document.body.classList.remove('vibrancy-active');
+                    cliInput.value='> Glass engine deactivated';
+                }
+                break;
             case'theme':
                 const validThemes=['default', 'vanilla','gruvbox','nord','midnight','matcha'];
                 if(value==='crt'){
@@ -648,6 +662,7 @@ cliInput.addEventListener('keypress',(e)=>{
             case 'sudo':
                     cliInput.value='> Nice try ;)';
                     break;
+
             default:
                 cliInput.value=`> Command not recognized: ${command}`;
 
