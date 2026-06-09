@@ -1,3 +1,14 @@
+let themeColors={main:'#EDEDf0',dim:'#8A8A93',accent:'#aa3333'};
+function syncThemeColors(){
+    const styles=getComputedStyle(document.body);
+    themeColors.main=styles.getPropertyValue('--text-main').trim();
+    themeColors.dim=styles.getPropertyValue('--text-dim').trim();
+    themeColors.accent=styles.getPropertyValue('--accent-color').trim()||'#aa3333';
+
+}
+const themeObserver= new MutationObserver(syncThemeColors);
+themeObserver.observe(document.body,{attributes:true,attributeFilter:['data-theme']});
+syncThemeColors();
 let is24hour=true;
 const timeToggleBtn=  document.getElementById('time-toggle-btn');
 const clockText=document.getElementById('clock-text');
