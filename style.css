@@ -594,3 +594,21 @@ body.has-wallpaper.vibrancy-active .modal-content{
     border:1px solid rgba(225,225,225,0.12);
     box-shadow:0 12px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(225,225,225,0.15);
 }
+
+body.has-wallpaper .clock-face{
+    background:
+        radial-gradient(transparent 65%,transparent 68%),
+        repeating-conic-gradient(from -1deg,var(--text-main)0deg 2deg,transparent 2deg 30deg)!important;
+    border:1px solid rgba(225,225,225,0.15);
+}
+body.has-wallpaper{
+    --text-dim:color-mix(in srgb,var(--text-main)70%, transparent);
+}
+body.has-wallpaper.vibrancy-active{
+    text-shadow:0 1px 4px rgba(0,0,0,0.35);
+
+}
+body[data-theme="vanilla"].has-wallpaper.vibrancy-active,
+body[data-theme="matcha"].has-wallpaper.vibrancy-active{
+    text-shadow:0 1px 4px rgba(225,225,225,0.6);
+}
