@@ -704,3 +704,13 @@ body.zen-active .top-bar{
 body.zen-active .main-grid .panel:not(.zen-hide){
     top:56% !important;
 }
+
+::webkit-scrollbar{
+    display: none !important;
+
+}
+html,body{
+    -ms-overflow-style:none !important;
+    scrollbar-width:none !important;
+    
+}
