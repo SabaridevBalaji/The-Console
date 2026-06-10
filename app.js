@@ -98,22 +98,23 @@ textarea.addEventListener('input',()=> {
 
 const themeBtn=document.getElementById('theme-btn');
 let currentTheme=localStorage.getItem('theme')||'default';
+let currentMode=localStorage.getItem('theme_mode')||'dark';
 document.body.setAttribute('data-theme',currentTheme);
-themeBtn.addEventListener('click',()=>{
-    if(currentTheme ==='vanilla'){
-        currentTheme='default';
-    }else{
-        currentTheme='vanilla';
+document.body.setAttribute('data-mode',currentMode);
 
-    }
-    document.body.setAttribute('data-theme', currentTheme);
-    localStorage.setItem('theme', currentTheme);
+themeBtn.addEventListener('click',()=>{
+    currentMode=currentMode==='dark'?'light':'dark';
+    document.body.setAttribute('data-mode',currentMode);
+    localStorage.setItem('theme_mode', currentMode);
+    syncThemeColors();
+
 });
 document.querySelectorAll('.theme-select-btn').forEach(btn=>{
     btn.addEventListener('click',(e)=>{
         currentTheme= e.target.getAttribute('data-theme');
         document.body.setAttribute('data-theme', currentTheme);
         localStorage.setItem('theme', currentTheme);
+        syncThemeColors();
     });
 });
 
