@@ -1025,3 +1025,16 @@ clearWallpaper.addEventListener('click',()=>{
     localStorage.removeItem('console_wallpaper');
 
 });
+
+
+const fontSelect=document.getElementById('font-select');
+const savedFont=localStorage.getItem('console_font')||'sans-serif';
+if(fontSelect){
+    fontSelect.value=savedFont;
+    document.body.style.fontFamily=savedFont;
+    fontSelect.addEventListener('change',(e)=>{
+        const selectedFont=e.target.value;
+        document.body.style.fontFamily=selectedFont;
+        localStorage.setItem('console_font',selectedFont);
+    });
+}
