@@ -31,6 +31,22 @@ body[data-theme="midnight"]{
 body[data-theme="matcha"]{
     --bg-color:#e8f0e4; --panel-bg:#dbe6d5; --text-main: #2c3b2e; --text-dim:#7a8c7c;--accent-color:#5c755c;
 }
+body[data-theme="sakura"]{
+    --bg-color:#FFF5F6; --panel-bg:#FBEBEF; --text-main:#6C4146; --text-dim:#B58D93; --accent-color:#E07A8B;
+
+}
+body[data-theme="cyberpunk"]{
+    --bg-color:#000B19; --panel-bg:#091528; --text-main:#00FFCC; --text-dim:#7053FF; --accent-color:#FDEE00;
+
+}
+body[data-theme="dracula"]{
+    --bg-color:#282A36; --panel-bg:#44475A; --text-main:#F8F8F2; --text-dim:#6272A4; --accent-color:#FF79C6;
+
+}
+body[data-theme="ocean"]{
+    --bg-color:#0F172A; --panel-bg:#1E293B; --text-main:#F8FAFC; --text-dim:#64748B; --accent-color:#0EA5E9;
+
+}
 
 *{
     box-sizing: border-box;
@@ -712,5 +728,5 @@ body.zen-active .main-grid .panel:not(.zen-hide){
 html,body{
     -ms-overflow-style:none !important;
     scrollbar-width:none !important;
-    
+
 }
