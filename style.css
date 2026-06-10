@@ -662,7 +662,7 @@ body.has-wallpaper.zen-active::before{
     background:rgba(0,0,0,0.43);
     backdrop-filter:blur(12px);
     -webkit-backdrop-filter:blur(12px);
-    z-index: index 0;
+    z-index: 0;
 }
 .top-bar,.main-grid{
     position:relative;
@@ -695,4 +695,12 @@ body.has-wallpaper.vibrancy-active #settings-btn{
     box-shadow:0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.01)!important;
 
 
+}
+body.zen-active .top-bar{
+    padding-top:0.5rem !important;
+    padding-bottom:0rem !important;
+
+}
+body.zen-active .main-grid .panel:not(.zen-hide){
+    top:56% !important;
 }
