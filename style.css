@@ -668,3 +668,31 @@ body.has-wallpaper.zen-active::before{
     position:relative;
     z-index:10;
 }
+
+body.has-wallpaper .custom-number-wrapper{
+    background:rgba(0,0,0,0.15)!important;
+    border-color:rgba(255,255,255,0.1)!important;
+}
+body[data-theme="vanilla"].has-wallpaper .custom-number-wrapper,
+body[data-theme="matcha"].has-wallpaper.custom-number-wrapper{
+    background:rgba(255,255,255,0.3)!important;
+    border-color:rgba(0,0,0,0.08)!important;
+
+}
+body.has-wallpaper #setting-btn{
+    background-color:color-mix(in srgb, var(--panel-bg) 85%,transparent)!important;
+    backdrop-filter:blur(12px)!important;
+    -webkit-backdrop-filter:blur(12px) !important;
+
+    border:1px solid rgba(255,255,255,0.05)!important;
+
+}
+body.has-wallpaper.vibrancy-active #settings-btn{
+    background-color:color-mix(in srgb, var(--panel-bg)55%, transparent)!important;
+    backdrop-filter:blur(24px) saturate(180%)!important ;
+    -webkit-backdrop-filter:blur(24px) saturate(180%)!important;
+    border:1px solid rgba(255,255,255,0.08)!important;
+    box-shadow:0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.01)!important;
+
+
+}
