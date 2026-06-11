@@ -297,11 +297,11 @@ body[data-theme="botanical"]{
 
 }
 body[data-theme="botanical"][data-mode="light"]{
-    --bg-color:#7b9c98;
-    --panel-bg:#5c7a77;
-    --text-main:#eaf1f3;
-    --text-dim:#4d5e5d;
-    --accent-color:#f1ebd8;
+    --bg-color:#eaf1f3;
+    --panel-bg:#dde8e6;
+    --text-main:#252a2a;
+    --text-dim:#5c7a77;
+    --accent-color:#4d5e5d;
 
 }
 body[data-theme="bingsu"]{
