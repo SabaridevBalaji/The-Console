@@ -9,6 +9,12 @@ built for hackclub macondo.
 * to-do list and a scratchpad (saves to localstorage so u dont lose your stuff)
 * live weather, lofi radio, and an ambient mixer
 * light/dark mode, zen mode, a crt filter
+* 20+ custom color themes with a dual-state light/dark matrix
+* local audio player with folder uploads and eq visualizer
+* custom wallpaper with an optional glass vibrancy effect
+* built in terminal(press alt + c) to control the dashboard via commands
+* strict focus mode and deep work heatmap tracker 
+
 
 ## credits
 
