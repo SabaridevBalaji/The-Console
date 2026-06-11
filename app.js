@@ -581,7 +581,7 @@ cliInput.addEventListener('keypress',(e)=>{
                 }
                 break;
             case 'theme':
-                const validThemes=['default','vanilla','gruvbox','nord','midnight','matcha','sakura','cyberpunk','dracula','ocean'];
+                const validThemes=['default','vanilla','gruvbox','nord','midnight','matcha','sakura','cyberpunk','dracula','ocean','vaporwave','afterdark','miami','cyberspace','monokai','tokyonight','catppuccin','olivia','botanical','bingsu','stealth'];
                 if(value==='crt'){
                     crtBtn.click();
                     cliInput.value='> CRT filter toggled';
