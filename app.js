@@ -580,20 +580,48 @@ cliInput.addEventListener('keypress',(e)=>{
                     cliInput.value='> Glass engine deactivated';
                 }
                 break;
-            case'theme':
-                const validThemes=['default', 'vanilla','gruvbox','nord','midnight','matcha'];
+            case 'theme':
+                const validThemes=['default','vanilla','gruvbox','nord','midnight','matcha','sakura','cyberpunk','dracula','ocean'];
                 if(value==='crt'){
                     crtBtn.click();
                     cliInput.value='> CRT filter toggled';
 
+                }else if(value==='light'||value==='dark'){
+                    currentMode=value;
+                    document.body.setAttribute('data-mode',currentMode);
+                    localStorage.setItem('theme-mode', currentMode);
+                    syncThemeColors();
+                    cliInput.value=`>Global luminosity set to ${value} mode`;
+
                 }else if(validThemes.includes(value)){
                     currentTheme=value;
-                    document.body.setAttribute('data-theme', value);
-                    localStorage.setItem('theme', value);
+                    document.body.setAttribute('data-theme',value);
+                    localStorage.setItem('theme',value);
+                    syncThemeColors();
                     cliInput.value=`> Theme changed to ${value}`;
 
                 }else{
-                    cliInput.value='> Error: Valid themes are crt, default, vanilla, gruvbox, nord, midnight, matcha'
+                    cliInput.value='> Error: Valid args are [light/dark/crt] or a theme name';
+
+                }
+                break;
+
+            case 'font':
+                const fontMap={
+                    'sans':'sans-serif',
+                    'mono':'monospace',
+                    'serif':'Georgia, serif',
+                    'typewriter':"'Courier New', monospace"
+                };
+                if(fontMap[value]){
+                    const selectedFont=fontMap[value];
+                    document.body.style.fontFamily=selectedFont;
+                    const fontDropdown=document.getElementById('font-select');
+                    if(fontDropdown)fontDropdown.value=selectedFont;
+                    cliInput.value=`> Typography engine set to ${value}`;
+
+                }else{
+                    cliInput.value='> Errorr: Valid fonts are [sans/mono/serif/typewriter]';
                 }
                 break;
             case'clear':
