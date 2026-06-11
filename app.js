@@ -589,7 +589,7 @@ cliInput.addEventListener('keypress',(e)=>{
                 }else if(value==='light'||value==='dark'){
                     currentMode=value;
                     document.body.setAttribute('data-mode',currentMode);
-                    localStorage.setItem('theme-mode', currentMode);
+                    localStorage.setItem('theme_mode', currentMode);
                     syncThemeColors();
                     cliInput.value=`>Global luminosity set to ${value} mode`;
 
