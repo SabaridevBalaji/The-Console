@@ -611,7 +611,10 @@ cliInput.addEventListener('keypress',(e)=>{
                     'sans':'sans-serif',
                     'mono':'monospace',
                     'serif':'Georgia, serif',
-                    'typewriter':"'Courier New', monospace"
+                    'typewriter':"'Courier New', monospace",
+                    'inter':"'Inter', sans-serif",
+                    'nunito':"'Nunito', sans-serif",
+                    'marker':"'Permanent Marker', cursive"
                 };
                 if(fontMap[value]){
                     const selectedFont=fontMap[value];
@@ -621,7 +624,7 @@ cliInput.addEventListener('keypress',(e)=>{
                     cliInput.value=`> Typography engine set to ${value}`;
 
                 }else{
-                    cliInput.value='> Errorr: Valid fonts are [sans/mono/serif/typewriter]';
+                    cliInput.value='> Errorr: Valid fonts are [sans/mono/serif/typewriter/inter/nunito/marker]';
                 }
                 break;
             case'clear':
