@@ -169,7 +169,7 @@ body[data-theme="vaporwave"]{
     --accent-color:#ffff00;
 
 }
-body[data-theme="vaporwave"][date-mode="light"]{
+body[data-theme="vaporwave"][data-mode="light"]{
     --bg-color:#ffdbfe;
     --panel-bg:#f5c2f3;
     --text-main:#2b184c;
@@ -202,7 +202,7 @@ body[data-theme="miami"]{
 }
 body[data-theme="miami"][data-mode="light"]{
     --bg-color:#f0f7f8;
-    --panel-bg:#dcec0f;
+    --panel-bg:#dcecf0;
     --text-main:#222431;
     --text-dim:#d85698;
     --accent-color:#1e9ca4;
