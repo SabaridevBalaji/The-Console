@@ -1,8 +1,11 @@
-# the console
+# ZenCLI
 
 I built this cause I needed a minimal dashboard that actually works without being bloated or requiring any sign-in. 
 
 built for hackclub macondo.
+
+## preview
+![Dashboard Running]()
 
 ## stuff it does
 * timer, analog clock, and a 12h/24h toggle

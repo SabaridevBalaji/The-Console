@@ -211,7 +211,7 @@ function updateFlow(){
         document.title=`(${m}:${s}) - Focus`;
 
     }else{
-        document.title= `The Console`;
+        document.title= `ZenCLI`;
     }
 
 }
