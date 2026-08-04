@@ -5,7 +5,7 @@ I built this cause I needed a minimal dashboard that actually works without bein
 built for hackclub macondo.
 
 ## preview
-![Dashboard Running]()
+![Dashboard Running](screenshot_1.png)
 
 ## stuff it does
 * timer, analog clock, and a 12h/24h toggle
