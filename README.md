@@ -19,6 +19,12 @@ built for hackclub macondo.
 * strict focus mode and deep work heatmap tracker 
 
 
+## setup/how to run locally
+1. Download the zip file and extract it.
+2. open the  folder and double click `index.html` to run it directly in your browser
+
+
+
 ## credits
 
 * alarm: [car door chime](https://freesound.org/s/345067/) by metrostock99 (cc0)
